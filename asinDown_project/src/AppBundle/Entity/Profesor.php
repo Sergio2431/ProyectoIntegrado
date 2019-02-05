@@ -13,20 +13,19 @@ use Doctrine\ORM\Mapping as ORM;
 class Profesor
 {
     /**
-     * @var int
+     * @var string
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="username", type="string")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    private $username;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="usuario", type="string", length=255, unique=true)
+     * @ORM\Column(name="password", type="string")
      */
-    private $usuario;
+    private $password;
 
     /**
      * @var string
@@ -65,37 +64,37 @@ class Profesor
 
 
     /**
-     * Get id.
+     * Get username.
      *
-     * @return int
+     * @return string
      */
-    public function getId()
+    public function getUsername()
     {
-        return $this->id;
+        return $this->username;
     }
 
     /**
-     * Set usuario.
+     * Set password.
      *
-     * @param string $usuario
+     * @param string $password
      *
-     * @return Profesor
+     * @return Alumno
      */
-    public function setUsuario($usuario)
+    public function setPassword($password)
     {
-        $this->usuario = $usuario;
+        $this->password = $password;
 
         return $this;
     }
 
     /**
-     * Get usuario.
+     * Get password.
      *
      * @return string
      */
-    public function getUsuario()
+    public function getPassword()
     {
-        return $this->usuario;
+        return $this->password;
     }
 
     /**
