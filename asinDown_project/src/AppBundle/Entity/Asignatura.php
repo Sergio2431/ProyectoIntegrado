@@ -28,6 +28,12 @@ class Asignatura
      */
     private $nombre;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Aula", inversedBy="asignatura")
+     * @ORM\JoinColumn(name="id_aula", referencedColumnName="id")
+     */
+    private $id_aula;
+
 
     /**
      * Get id.

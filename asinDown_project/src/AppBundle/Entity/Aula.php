@@ -28,6 +28,16 @@ class Aula
      */
     private $numAula;
 
+     /**
+     * @ORM\OneToMany(targetEntity="Asignatura", mappedBy="aula")
+     */
+    private $asignatura;
+
+    public function __construct()
+    {
+        $this->asignatura = new ArrayCollection();
+    }
+
 
     /**
      * Get id.
