@@ -2,15 +2,18 @@
 
 namespace AppBundle\Entity;
 
+use Symfony\Component\Security\Core\User\UserInterface;
 use Doctrine\ORM\Mapping as ORM;
 
+use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Alumno
  *
  * @ORM\Table(name="alumno")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\AlumnoRepository")
  */
-class Alumno
+class Alumno implements UserInterface
+
 {
     /**
      * @var string
@@ -69,6 +72,21 @@ class Alumno
      */
     private $correo;
 
+
+    /**
+    * @var array
+    *
+    * @ORM\Column(name="roles", type="json_array")
+    */
+    private $roles;
+
+
+    private $plainPassword;
+
+    public function __construct()
+    {
+        $this->roles = array('ROLE_USER');
+    }
 
     /**
      * Get username.
@@ -246,5 +264,52 @@ class Alumno
     public function getCorreo()
     {
         return $this->correo;
+    }
+
+      /**
+   * Set roles
+   *
+   * @param array $roles
+   *
+   * @return Alumno
+   */
+  public function setRoles($roles)
+  {
+      $this->roles = $roles;
+
+      return $this;
+  }
+
+  /**
+   * Get roles
+   *
+   * @return array
+   */
+  public function getRoles()
+  {
+      return $this->roles;
+  }
+
+
+        public function getPlainPassword()
+    {
+        return $this->plainPassword;
+    }
+
+    public function setPlainPassword($password)
+    {
+        $this->plainPassword = $password;
+    }
+
+
+ public function getSalt()
+{
+  // The bcrypt and argon2i algorithms don't require a separate salt.
+  // You *may* need a real salt if you choose a different encoder.
+  return null;
+}
+
+    public function eraseCredentials()
+    {
     }
 }

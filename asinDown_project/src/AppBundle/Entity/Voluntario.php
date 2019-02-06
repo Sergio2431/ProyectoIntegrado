@@ -2,15 +2,17 @@
 
 namespace AppBundle\Entity;
 
+use Symfony\Component\Security\Core\User\UserInterface;
 use Doctrine\ORM\Mapping as ORM;
 
+use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Voluntario
  *
  * @ORM\Table(name="voluntario")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\VoluntarioRepository")
  */
-class Voluntario
+class Voluntario implements UserInterface
 {
     /**
      * @var string
@@ -78,6 +80,21 @@ class Voluntario
    {
        $this->voluntario = new ArrayCollection();
    }
+
+       /**
+       * @var array
+       *
+       * @ORM\Column(name="roles", type="json_array")
+       */
+      private $roles;
+
+
+    private $plainPassword;
+
+    public function __constructor()
+    {
+        $this->roles = array('ROLE_USER');
+    }
     /**
      * Get username.
      *
@@ -254,5 +271,52 @@ class Voluntario
     public function getDisponibilidad()
     {
         return $this->disponibilidad;
+    }
+
+      /**
+   * Set roles
+   *
+   * @param array $roles
+   *
+   * @return Voluntario
+   */
+  public function setRoles($roles)
+  {
+      $this->roles = $roles;
+
+      return $this;
+  }
+
+  /**
+   * Get roles
+   *
+   * @return array
+   */
+  public function getRoles()
+  {
+      return $this->roles;
+  }
+
+
+        public function getPlainPassword()
+    {
+        return $this->plainPassword;
+    }
+
+    public function setPlainPassword($password)
+    {
+        $this->plainPassword = $password;
+    }
+
+
+ public function getSalt()
+{
+  // The bcrypt and argon2i algorithms don't require a separate salt.
+  // You *may* need a real salt if you choose a different encoder.
+  return null;
+}
+
+    public function eraseCredentials()
+    {
     }
 }
