@@ -61,7 +61,7 @@ class DefaultController extends Controller
                         $entityManager = $this->getDoctrine()->getManager();
                         $entityManager->persist($Alumno);
                         $entityManager->flush();
-
+                        return $this->redirectToRoute('list');
                       }
 
               return $this->render('Seguridad/nuevo.html.twig', array(
