@@ -69,7 +69,15 @@ class Voluntario
      */
     private $disponibilidad;
 
+    /**
+    * @ORM\OneToMany(targetEntity="Asignatura", mappedBy="voluntario")
+    */
+   private $voluntario;
 
+   public function __construct()
+   {
+       $this->voluntario = new ArrayCollection();
+   }
     /**
      * Get username.
      *

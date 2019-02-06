@@ -62,6 +62,15 @@ class Profesor
      */
     private $correo;
 
+    /**
+    * @ORM\OneToMany(targetEntity="Asignatura", mappedBy="profesor")
+    */
+   private $profesor;
+
+   public function __construct()
+   {
+       $this->profesor = new ArrayCollection();
+   }
 
     /**
      * Get username.

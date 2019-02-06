@@ -28,6 +28,15 @@ class Programa
      */
     private $nombre;
 
+    /**
+    * @ORM\OneToMany(targetEntity="Asignatura", mappedBy="programa")
+    */
+   private $programa;
+
+   public function __construct()
+   {
+       $this->programa = new ArrayCollection();
+   }
 
     /**
      * Get id.
