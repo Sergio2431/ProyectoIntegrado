@@ -98,6 +98,20 @@ class Alumno implements UserInterface
         return $this->username;
     }
 
+        /**
+     * Set username.
+     *
+     * @param string $username
+     *
+     * @return Alumno
+     */
+    public function setUsername($username)
+    {
+        $this->username = $username;
+
+        return $this;
+    }
+
     /**
      * Set password.
      *

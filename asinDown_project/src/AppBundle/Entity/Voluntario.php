@@ -5,6 +5,8 @@ namespace AppBundle\Entity;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Doctrine\ORM\Mapping as ORM;
 
+use Doctrine\Common\Collections\ArrayCollection;
+
 use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Voluntario
@@ -79,6 +81,8 @@ class Voluntario implements UserInterface
    public function __construct()
    {
        $this->voluntario = new ArrayCollection();
+       $this->roles = array('ROLE_USER');
+
    }
 
        /**
@@ -91,10 +95,7 @@ class Voluntario implements UserInterface
 
     private $plainPassword;
 
-    public function __constructor()
-    {
-        $this->roles = array('ROLE_USER');
-    }
+
     /**
      * Get username.
      *
@@ -106,11 +107,25 @@ class Voluntario implements UserInterface
     }
 
     /**
+     * Set username.
+     *
+     * @param string $username
+     *
+     * @return Voluntario
+     */
+    public function setUsername($username)
+    {
+        $this->username = $username;
+
+        return $this;
+    }
+
+    /**
      * Set password.
      *
      * @param string $password
      *
-     * @return Alumno
+     * @return Voluntario
      */
     public function setPassword($password)
     {

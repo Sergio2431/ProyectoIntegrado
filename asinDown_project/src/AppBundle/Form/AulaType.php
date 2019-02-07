@@ -6,6 +6,10 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
+
 class AulaType extends AbstractType
 {
     /**
@@ -13,7 +17,13 @@ class AulaType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('numAula');
+        $builder->
+        
+        add('numAula', TextType::class)
+
+        ->add('registrarse', SubmitType::class)
+
+        ;
     }/**
      * {@inheritdoc}
      */
