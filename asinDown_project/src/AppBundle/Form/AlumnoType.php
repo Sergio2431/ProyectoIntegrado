@@ -21,7 +21,8 @@ class AlumnoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-        ->add('username', TextType::class)
+        ->add('username', TextType::class, array(
+        'attr' => array('readonly' => true)))
         ->add('password', PasswordType::class)
         ->add('nombre', TextType::class)
         ->add('apellidos', TextType::class)
@@ -29,25 +30,7 @@ class AlumnoType extends AbstractType
         ->add('telefono', TelType::class)
         ->add('direccion', TextType::class)
         ->add('correo', EmailType::class)
-        ->add('save', SubmitType::class, array('label' => 'Registrar'))
+        ->add('save', SubmitType::class, array('label' => 'Actualizar'))
         ->add('clear', ResetType::class, array('attr' => array('class' => 'Limpiar')));
-    }/**
-     * {@inheritdoc}
-     */
-    public function configureOptions(OptionsResolver $resolver)
-    {
-        $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Alumno'
-        ));
     }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getBlockPrefix()
-    {
-        return 'appbundle_alumno';
-    }
-
-
 }
