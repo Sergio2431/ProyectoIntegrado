@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8"/>
     <title>
-      {% block title %}AsinDown{% endblock %}
+      {% block title %}{% endblock %}
     </title>
     <!-- Bootstrap core CSS -->
     <link
@@ -35,7 +35,7 @@
                 <a class="nav-link" href="{{ path('programas') }}">Membresía</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{{ path('calendario') }}">Perfil</a>
+                <a class="nav-link" href="{{ path('login') }}">Perfil</a>
               </li>
             </ul>
           </div>
@@ -45,7 +45,7 @@
     
     <div class="espacio-nav">s</div>
 
-    {% block contenido %}{% endblock %}
+    {% block body %}{% endblock %}
 
 
     <!-- Footer -->
