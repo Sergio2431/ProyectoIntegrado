@@ -1,11 +1,11 @@
-{% extends('base.html.twig')%}
-
-{% block stylesheet %}
-
+{# Plantillla de nuestra aplicacion #}
+{% extends 'base.html.twig' %}
+{# TITULO #}
+{% block title %}
+Pagina principal
 {% endblock %}
-
+{# CONTENIDO #}
 {% block body %}
-
 <br>
 {{ form_start(form) }}
 {{ form_widget(form) }}

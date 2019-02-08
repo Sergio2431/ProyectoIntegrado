@@ -1,30 +1,31 @@
-
-{% extends('base.html.twig')%}
-
-{% block stylesheet %}
-
+{# Plantillla de nuestra aplicacion #}
+{% extends 'base.html.twig' %}
+{# TITULO #}
+{% block title %}
+Pagina principal
 {% endblock %}
-
+{# CONTENIDO #}
 {% block body %}
+
 
 <table>
 
-<ul>
+
   {% for almn in Alumno %}
   <tr>
-      <td><li>{{ almn.username }}</li></td>
-      <td><li>{{ almn.password }}</li></td>
-      <td><li>{{ almn.nombre }}</li></td>
-      <td><li>{{ almn.apellidos }}</li></td>
-      <td><li>{{ almn.diversidad }}</li></td>
-      <td><li>{{ almn.telefono }}</li></td>
-      <td><li>{{ almn.direccion }}</li></td>
-      <td><li>{{ almn.correo}}</li></td>
-      <td><li><a href="{{path('update',{'username':almn.username})}}" id="link">Actualizar</a></li></td>
-      <td><li><a href="{{path('delete',{'username':almn.username})}}" id="link">Borrar</a></li></td>
+      <td>{{ almn.username }}</td>
+      <td>{{ almn.password }}</td>
+      <td>{{ almn.nombre }}</td>
+      <td>{{ almn.apellidos }}</td>
+      <td>{{ almn.diversidad }}</td>
+      <td>{{ almn.telefono }}</td>
+      <td>{{ almn.direccion }}</td>
+      <td>{{ almn.correo}}</td>
+      <td><a href="{{path('update',{'username':almn.username})}}" id="link">Actualizar</a></td>
+      <td><a href="{{path('delete',{'username':almn.username})}}" id="link">Borrar</a></td>
       </tr>
     {% endfor %}
-</ul>
+
 
 </table>
 {% endblock %}
