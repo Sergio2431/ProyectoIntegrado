@@ -15,45 +15,50 @@
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
   </head>
   <body>
-    <!-- Navigation -->
-    <!-- Navigation -->
-    <nav class="navbar fixed-top navbar-expand-lg fixed-top"> <div class="container">
-      <a class="navbar-brand" href="{{ path('calendario') }}"><img alt="Logo de AsinDown" class="logo" src="https://www.asindown.org/wp-content/uploads/2018/06/nuevo_logo_100.png"></a>
-        <button aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right" data-target="#navbarResponsive" data-toggle="collapse" type="button">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="{{ path('calendario') }}">Inicio</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{ path('perfil') }}">Entradas</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{ path('programas') }}">Membresía</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{ path('calendario') }}">Perfil</a>
-            </li>
-          </ul>
-        </div>
-    </nav>
-    <!-- Fin Menu de Navegacion -->
 
+    <header>
+      <!-- Navigation -->
+      <nav class="navbar fixed-top navbar-expand-lg fixed-top"> <div class="container">
+        <a class="navbar-brand" href="{{ path('calendario') }}"><img alt="Logo de AsinDown" class="logo" src="https://www.asindown.org/wp-content/uploads/2018/06/nuevo_logo_100.png"></a>
+          <button aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right" data-target="#navbarResponsive" data-toggle="collapse" type="button">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="{{ path('calendario') }}">Inicio</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ path('perfil') }}">Entradas</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ path('programas') }}">Membresía</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ path('calendario') }}">Perfil</a>
+              </li>
+            </ul>
+          </div>
+      </nav>
+      <!-- Fin Menu de Navegacion -->
+    </header>
+    
+    <div class="espacio-nav">s</div>
 
     {% block contenido %}{% endblock %}
 
 
     <!-- Footer -->
     <footer class="py-5 bg-dark">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-md-5">
-            <p class="m-0 text-center text-white">Copyright &copy; Your Website 2018</p>
+      <div class="container">
+        <div class="row text-center">
+          <div class="col-md-6 mr-md-5 text-left">
+            <a href="{{ path('calendario') }}"><img alt="Logo de AsinDown" class="logo titulos-footer" src="https://www.asindown.org/wp-content/uploads/2017/04/logo_60.png"></a>
+            <p>ASINDOWN es una entidad sin ánimo de lucro creada en 1989, cuyo objetivo principal es facilitar y promover cuantos medios sean necesarios para conseguir el desarrollo integral de las personas con Síndrome de Down y favorecer su plena integración familiar, educativa, laboral y social como miembros activos de la sociedad.</p>
           </div>
-          <div class="col-md-5">
+          <div class="col-md-4">
             <h3 class="titulos-footer">Síguenos</h3>
+            <hr>
             <a class="redes-footer" href=""><i class="fab fa-facebook-f"></i></a>
             <a class="redes-footer" href=""><i class="fab fa-instagram"></i></a>
             <a class="redes-footer" href=""><i class="fab fa-youtube"></i></a>
