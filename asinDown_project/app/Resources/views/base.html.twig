@@ -1,42 +1,74 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}AsinDown{% endblock %}</title>
-        <!-- Bootstrap core CSS -->
-        <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-        <!-- Custom styles for this template -->
-        <link href="{{ asset('css/modern-business.css" rel="stylesheet') }}">
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
+  <head>
+    <meta charset="UTF-8"/>
+    <title>
+      {% block title %}AsinDown{% endblock %}
+    </title>
+    <!-- Bootstrap core CSS -->
+    <link
+    href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <!-- Custom styles for this template -->
+    <link href="{{ asset('css/modern-business.css') }}" rel="stylesheet">
+      {% block stylesheets %}{% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+  </head>
+  <body>
     <!-- Navigation -->
-  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <div class="container">
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="logo">
-            <a class="navbar-brand" href="{{ path('calendario') }}">Logo</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{ path('perfil') }}">Perfil</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{ path('programas') }}">Programas</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{ path('calendario') }}">Calendario</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+    <!-- Navigation -->
+    <nav class="navbar fixed-top navbar-expand-lg fixed-top"> <div class="container">
+      <a class="navbar-brand" href="{{ path('calendario') }}"><img alt="Logo de AsinDown" class="logo" src="https://www.asindown.org/wp-content/uploads/2018/06/nuevo_logo_100.png"></a>
+        <button aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right" data-target="#navbarResponsive" data-toggle="collapse" type="button">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="{{ path('calendario') }}">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ path('perfil') }}">Entradas</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ path('programas') }}">Membresía</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ path('calendario') }}">Perfil</a>
+            </li>
+          </ul>
+        </div>
+    </nav>
     <!-- Fin Menu de Navegacion -->
-        {% block contenido %}{% endblock %}
-        <!-- Bootstrap core JavaScript -->
-        <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
-        <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-        {% block javascripts %}{% endblock %} 
-    </body>
+
+
+    {% block contenido %}{% endblock %}
+
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-5">
+            <p class="m-0 text-center text-white">Copyright &copy; Your Website 2018</p>
+          </div>
+          <div class="col-md-5">
+            <h3 class="titulos-footer">Síguenos</h3>
+            <a class="redes-footer" href=""><i class="fab fa-facebook-f"></i></a>
+            <a class="redes-footer" href=""><i class="fab fa-instagram"></i></a>
+            <a class="redes-footer" href=""><i class="fab fa-youtube"></i></a>
+            <a class="redes-footer" href=""><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+      </div>
+      <!-- /.container -->
+    </footer>
+
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    {% block javascripts %}{% endblock %}
+  </body>
 </html>
+        
