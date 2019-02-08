@@ -3,11 +3,40 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}AsinDown{% endblock %}</title>
+        <!-- Bootstrap core CSS -->
+        <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+        <!-- Custom styles for this template -->
+        <link href="{{ asset('css/modern-business.css" rel="stylesheet') }}">
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+    <!-- Navigation -->
+  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="logo">
+            <a class="navbar-brand" href="{{ path('calendario') }}">Logo</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ path('perfil') }}">Perfil</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ path('programas') }}">Programas</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ path('calendario') }}">Calendario</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+    <!-- Fin Menu de Navegacion -->
+        {% block contenido %}{% endblock %}
+        <!-- Bootstrap core JavaScript -->
+        <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
+        <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+        {% block javascripts %}{% endblock %} 
     </body>
 </html>
