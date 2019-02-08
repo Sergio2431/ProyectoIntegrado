@@ -5,6 +5,8 @@ security:
         AppBundle\Entity\Profesor: bcrypt
         AppBundle\Entity\Alumno: bcrypt
         AppBundle\Entity\Voluntario: bcrypt
+        AppBundle\Entity\Usuario: bcrypt
+      
 
     # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
     providers:
@@ -12,12 +14,9 @@ security:
             memory: ~
         my_db_provider:
             entity:
-                class: AppBundle:Alumno
+                class: AppBundle:Usuario
                 property: username
-                class: AppBundle:Profesor
-                property: username 
-                class: AppBundle:Voluntario
-                property: username          
+       
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
         dev:

@@ -20,6 +20,9 @@ class Alumno implements UserInterface
      *
      * @ORM\Column(name="username", type="string")
      * @ORM\Id
+     * 
+     * One Customer has One Cart.
+     * @ORM\OneToOne(targetEntity="Usuario", mappedBy="alumno")
      */
     private $username;
 
@@ -27,6 +30,9 @@ class Alumno implements UserInterface
      * @var string
      *
      * @ORM\Column(name="password", type="string")
+     * 
+     * @ORM\OneToOne(targetEntity="Usuario", mappedBy="alumno")
+     * 
      */
     private $password;
 

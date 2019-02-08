@@ -21,6 +21,9 @@ class Profesor implements UserInterface
      *
      * @ORM\Column(name="username", type="string")
      * @ORM\Id
+     * 
+     *  One Customer has One Cart.
+     * @ORM\OneToOne(targetEntity="Usuario", mappedBy="profesor")
      */
     private $username;
 
@@ -28,6 +31,9 @@ class Profesor implements UserInterface
      * @var string
      *
      * @ORM\Column(name="password", type="string")
+     * 
+     * @ORM\OneToOne(targetEntity="Usuario", mappedBy="profesor")
+     * 
      */
     private $password;
 
