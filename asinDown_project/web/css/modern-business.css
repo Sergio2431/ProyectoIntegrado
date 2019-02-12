@@ -116,3 +116,23 @@
    h1.tituloInicioSesion {
        margin-bottom: 30px;
    }
+
+
+/* Página de Perfil */
+
+    .containerPerfil {
+      margin-top: 100px;
+  }
+
+  .containerFormulario{
+      margin: 24px 0 12px 0;
+  }
+
+  .imagen-Perfil{
+      width: 300px;
+      height: 300px;
+      margin-left: 50px;
+      margin-bottom: 30px;
+  }
+
+/* Iconos de los perfiles */
