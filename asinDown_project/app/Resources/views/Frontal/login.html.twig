@@ -6,37 +6,25 @@
       {% block titulo %}{% endblock %}
     </title>
     <!-- Bootstrap core CSS -->
-    <link
-    href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <!-- Custom styles for this template -->
     <link href="{{ asset('css/modern-business.css') }}" rel="stylesheet">
       {% block stylesheets %}{% endblock %}
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
   </head>
-  <body>
+  <body background="https://www.asindown.org/wp-content/uploads/2018/06/IMG_0642.jpg">
 
+    
     <header>
       <!-- Navigation -->
       <nav class="navbar fixed-top navbar-expand-lg fixed-top"> <div class="container">
-        <a class="navbar-brand" href="{{ path('calendario') }}"><img alt="Logo de AsinDown" class="logo" src="https://www.asindown.org/wp-content/uploads/2018/06/nuevo_logo_100.png"></a>
+        <a class="navbar-brand" href=""><img alt="Logo de AsinDown" class="logo" src="https://www.asindown.org/wp-content/uploads/2018/06/nuevo_logo_100.png"></a>
           <button aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right" data-target="#navbarResponsive" data-toggle="collapse" type="button">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-              <li class="nav-item">
-                <a class="nav-link" href="{{ path('calendario') }}">Calendario</a>
-              </li>
-              {# <li class="nav-item">
-                <a class="nav-link" href="{{ path('voluntarios') }}">Voluntarios</a>
-              </li> #}
-              <li class="nav-item">
-                <a class="nav-link" href="{{ path('programas') }}">Programas</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{{ path('perfil') }}">Perfil</a>
-              </li>
             </ul>
           </div>
       </nav>
@@ -47,7 +35,32 @@
     
     <div class="espacio-nav">s</div>
 
-    {% block contenido %}{% endblock %}
+    {% block contenido %}
+
+    <div class="containerLogin" style="background-color:#f1f1f1">
+    <form action="/action_page.php">
+     <div class="imgcontainer">
+     <h1> Inicio de Sesión </h1>
+    </div>
+
+      <label for="uname"><b>Usuario</b></label>
+      <input type="text" placeholder="Introduce el usuario" name="uname" required>
+
+      <label for="psw"><b>Contraseña</b></label>
+      <input type="password" placeholder="Introduce la contraseña" name="psw" required>
+
+      <button type="submit">Acceder</button>
+      <label>
+        <input type="checkbox" checked="checked" name="remember"> Recuerdame
+      </label>
+      
+      <br>
+   
+      <button type="button" class="cancelbtn">Cancelar</button>
+      <span class="psw"><a href="#">Olvidaste la contraseña?</a></span>
+    </div>
+    </form>
+    {% endblock %}
 
 
     <!-- Footer -->

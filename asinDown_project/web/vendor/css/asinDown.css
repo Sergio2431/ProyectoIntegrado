@@ -1,0 +1,34 @@
+/* Codigo para la Barra de Navegación */
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #0B81D9;
+    background-color: #dfd7d7;
+}
+
+li {
+    float: right;
+}
+
+.logo{
+    float: left;
+}
+
+li a {
+    display: block;
+    color: #666;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover:not(.active) {
+    background-color: #93C4E9;
+}
+
+li a.active {
+    color: white;
+    background-color: #0B81D9;
+}

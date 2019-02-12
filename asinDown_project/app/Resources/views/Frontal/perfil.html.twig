@@ -1,0 +1,75 @@
+{# Plantillla de nuestra aplicacion #}
+{% extends 'base.html.twig' %}
+{# TITULO #}
+{% block titulo %}
+Pagina principal
+{% endblock %}
+{# CONTENIDO #}
+{% block contenido %}
+
+    <!-- Page Heading/Breadcrumbs -->
+
+    <div class="containerPerfil">
+        <h1 class="tituloPerfil mt-4 mb-3">Perfil</h1>
+
+        <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="calendario">Calendario</a>
+        </li>
+        <li class="breadcrumb-item active">Perfil</li>
+        </ol>
+
+        <!-- Marketing Icons Section -->
+       <div class="row">
+        <div class="col-6 mb-6">
+            <img class="img-perfil card-image-top" src="https://www.asindown.org/wp-content/uploads/2018/06/IMG_0642.jpg" alt="" width="400" height="400">
+        </div>
+        <div class="col-6 mb-6">
+            <h3><b>Nombre del Usuario</b></h3>
+            <div class="containerFormulario col-lg-10 mb-10">
+                <label for="uname"><b>Nombre</b></label>
+                <input type="text" name="uname" required>
+                <label for="uname"><b>Apellidos</b></label>
+                <input type="text" name="uname" required>
+                <label for="uname"><b>Usuario</b></label>
+                <input type="text" name="uname" required>
+                <label for="uname"><b>Correo</b></label>
+                <input type="text" name="uname" required>
+                <label for="uname"><b>Telefono</b></label>
+                <input type="text" name="uname" required>
+                <label for="uname"><b>Dirección</b></label>
+                <input type="text" name="uname" required>
+                <label for="uname"><b>Programa</b></label>
+                <input type="text" name="uname" required>
+            </div>
+        </div> 
+
+        
+      </div> 
+      <!-- /.row -->
+        {# <div class="columns_wrap">
+
+		    <div class="column-1_2">
+			    <div class="contacts_wrap">
+				    <div class="contacts_wrap_inner">
+						<div class="logo">
+			                <a href="https://www.asindown.org/"><img src="https://www.asindown.org/wp-content/uploads/2017/04/logo_60.png" class="logo_footer" alt="" width="233" height="60"></a>
+		                </div>
+				    <div class="contacts_address">
+			            <p style="text-align: justify">ASINDOWN es una entidad sin ánimo de lucro creada en 1989, cuyo objetivo principal es facilitar y promover cuantos medios sean necesarios para conseguir el desarrollo integral de las personas con <strong>Síndrome de Down</strong> y favorecer su plena integración familiar, educativa, laboral y social como miembros activos de la sociedad.</p>												</div>
+				    </div>	<!-- /.contacts_wrap_inner -->
+			    </div>	<!-- /.contacts_wrap -->
+	        </div> #}
+            {# <div class="column-1_2 width_right">
+								
+				<div class="columns_wrap">
+					<aside id="charity_is_hope_widget_socials-3" class="widget_number_1 column-1_2 widget widget_socials">
+                    <h5 class="widget_title">Síguenos</h5>		
+                    <div class="widget_inner">
+                <div class="sc_socials sc_socials_type_icons sc_socials_shape_square sc_socials_size_small"><div class="sc_socials_item"><a href="https://www.facebook.com/asindownvalencia" target="_blank" class="social_icons social_facebook"><span class="icon-facebook"></span></a></div><div class="sc_socials_item"><a href="https://www.youtube.com/channel/UCjIX8yS0UkTONCiTNuS29aQ" target="_blank" class="social_icons social_youtube"><span class="icon-youtube"></span></a></div><div class="sc_socials_item"><a href="https://twitter.com/ASINDOWN" target="_blank" class="social_icons social_twitter"><span class="icon-twitter"></span></a></div><div class="sc_socials_item"><a href="https://www.instagram.com/asindown/" target="_blank" class="social_icons social_instagramm"><span class="icon-instagramm"></span></a></div></div>		</div>
+
+		</aside>							</div></div>
+						</div>
+    </div> #}
+
+{% endblock %}
