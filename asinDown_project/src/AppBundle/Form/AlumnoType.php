@@ -30,7 +30,6 @@ class AlumnoType extends AbstractType
         ->add('telefono', TelType::class)
         ->add('direccion', TextType::class)
         ->add('correo', EmailType::class)
-        ->add('save', SubmitType::class, array('label' => 'Actualizar'))
-        ->add('clear', ResetType::class, array('attr' => array('class' => 'Limpiar')));
+        ->add('save', SubmitType::class, array('label' => 'Actualizar'));
     }
 }

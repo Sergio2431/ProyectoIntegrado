@@ -5,6 +5,12 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\TelType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\ResetType;
 
 class VoluntarioType extends AbstractType
 {
@@ -13,24 +19,15 @@ class VoluntarioType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('username')->add('password')->add('nombre')->add('apellidos')->add('correo')->add('telefono')->add('direccion')->add('disponibilidad');
-    }/**
-     * {@inheritdoc}
-     */
-    public function configureOptions(OptionsResolver $resolver)
-    {
-        $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Voluntario'
-        ));
+        $builder
+        ->add('username')
+        ->add('password')
+        ->add('nombre')
+        ->add('apellidos')
+        ->add('correo')
+        ->add('telefono')
+        ->add('direccion')
+        ->add('disponibilidad')
+        ->add('save', SubmitType::class, array('label' => 'Actualizar'));
     }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getBlockPrefix()
-    {
-        return 'appbundle_voluntario';
-    }
-
-
 }

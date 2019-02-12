@@ -93,7 +93,7 @@ class Voluntario
      *
      * @param string $password
      *
-     * @return Alumno
+     * @return Voluntario
      */
     public function setPassword($password)
     {

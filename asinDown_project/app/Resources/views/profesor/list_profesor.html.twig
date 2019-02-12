@@ -2,36 +2,34 @@
 {% extends 'base.html.twig' %}
 {# TITULO #}
 {% block title %}
-Lista de Alumnos
+Lista de Profesores
 {% endblock %}
 {# CONTENIDO #}
 {% block body %}
 
 <table>
-<h1>Lista de Alumnos</h1>
+<h1>Lista de Profesores</h1>
 <tr class="title">
     <th>Nombre de Usuario</th>
     <th>Contraseña</th>
     <th>Nombre</th>
     <th>Apellidos</th>
-    <th>Diversidad</th>
     <th>Telefono</th>
     <th>Dirección</th>
     <th>Correo</th>
 </tr>
-  {% for almn in Alumno %}
+  {% for pro in Profesor %}
 
   <tr class="cont">
-      <td>{{ almn.username }}</td>
-      <td>{{ almn.password }}</td>
-      <td>{{ almn.nombre }}</td>
-      <td>{{ almn.apellidos }}</td>
-      <td>{{ almn.diversidad }}</td>
-      <td>{{ almn.telefono }}</td>
-      <td>{{ almn.direccion }}</td>
-      <td>{{ almn.correo}}</td>
-      <td><a href="{{path('update',{'username':almn.username})}}">Actualizar</a>
-      <td><a href="{{path('delete',{'username':almn.username})}}">Borrar</a></td>
+      <td>{{ pro.username }}</td>
+      <td>{{ pro.password }}</td>
+      <td>{{ pro.nombre }}</td>
+      <td>{{ pro.apellidos }}</td>
+      <td>{{ pro.telefono }}</td>
+      <td>{{ pro.direccion }}</td>
+      <td>{{ pro.correo}}</td>
+      <td><a href="{{path('updateProf',{'username':pro.username})}}" id="link">Actualizar</a>
+      <td><a href="{{path('deleteProf',{'username':pro.username})}}" id="link">Borrar</a></td>
   </tr>
   {% endfor %}
 </table>

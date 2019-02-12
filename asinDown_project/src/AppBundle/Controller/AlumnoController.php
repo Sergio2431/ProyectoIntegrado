@@ -3,8 +3,8 @@
 namespace AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use AppBundle\Entity\Alumno;
 use AppBundle\Form\AlumnoType;
@@ -47,7 +47,7 @@ class AlumnoController extends Controller
                         return $this->redirectToRoute('list');
                       }
 
-              return $this->render('alumno/nuevo.html.twig', array(
+              return $this->render('alumno/update.html.twig', array(
                   'form' => $form->createView(),
               ));
           }

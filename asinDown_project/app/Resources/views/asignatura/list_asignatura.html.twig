@@ -2,13 +2,13 @@
 {% extends 'base.html.twig' %}
 {# TITULO #}
 {% block title %}
-Lista de Alumnos
+Lista Asignaturas
 {% endblock %}
 {# CONTENIDO #}
 {% block body %}
 
 <table>
-<h1>Lista de Alumnos</h1>
+<h1>Lista de Asignatura</h1>
 <tr class="title">
     <th>Nombre de Usuario</th>
     <th>Contraseña</th>
@@ -19,19 +19,15 @@ Lista de Alumnos
     <th>Dirección</th>
     <th>Correo</th>
 </tr>
-  {% for almn in Alumno %}
+  {% for asig in Asignatura %}
 
   <tr class="cont">
-      <td>{{ almn.username }}</td>
-      <td>{{ almn.password }}</td>
-      <td>{{ almn.nombre }}</td>
-      <td>{{ almn.apellidos }}</td>
-      <td>{{ almn.diversidad }}</td>
-      <td>{{ almn.telefono }}</td>
-      <td>{{ almn.direccion }}</td>
-      <td>{{ almn.correo}}</td>
-      <td><a href="{{path('update',{'username':almn.username})}}">Actualizar</a>
-      <td><a href="{{path('delete',{'username':almn.username})}}">Borrar</a></td>
+      <td>{{ asig.id }}</td>
+      <td>{{ asig.id_aula }}</td>
+      <td>{{ asig.nombre }}</td>
+      <td>{{ asig.username_profesor }}</td>
+      <td>{{ asig.id_programa }}</td>
+      <td>{{ asig.username_voluntario }}</td>
   </tr>
   {% endfor %}
 </table>

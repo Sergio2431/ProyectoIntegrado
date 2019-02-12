@@ -2,36 +2,36 @@
 {% extends 'base.html.twig' %}
 {# TITULO #}
 {% block title %}
-Lista de Alumnos
+Lista de Voluntarios
 {% endblock %}
 {# CONTENIDO #}
 {% block body %}
 
 <table>
-<h1>Lista de Alumnos</h1>
+<h1>Lista de Voluntarios</h1>
 <tr class="title">
     <th>Nombre de Usuario</th>
     <th>Contraseña</th>
     <th>Nombre</th>
     <th>Apellidos</th>
-    <th>Diversidad</th>
+    <th>Disponibilidad</th>
     <th>Telefono</th>
     <th>Dirección</th>
     <th>Correo</th>
 </tr>
-  {% for almn in Alumno %}
+  {% for vol in Voluntario %}
 
   <tr class="cont">
-      <td>{{ almn.username }}</td>
-      <td>{{ almn.password }}</td>
-      <td>{{ almn.nombre }}</td>
-      <td>{{ almn.apellidos }}</td>
-      <td>{{ almn.diversidad }}</td>
-      <td>{{ almn.telefono }}</td>
-      <td>{{ almn.direccion }}</td>
-      <td>{{ almn.correo}}</td>
-      <td><a href="{{path('update',{'username':almn.username})}}">Actualizar</a>
-      <td><a href="{{path('delete',{'username':almn.username})}}">Borrar</a></td>
+      <td>{{ vol.username }}</td>
+      <td>{{ vol.password }}</td>
+      <td>{{ vol.nombre }}</td>
+      <td>{{ vol.apellidos }}</td>
+      <td>{{ vol.disponibilidad }}</td>
+      <td>{{ vol.telefono }}</td>
+      <td>{{ vol.direccion }}</td>
+      <td>{{ vol.correo}}</td>
+      <td><a href="{{path('updateVol',{'username':vol.username})}}" id="link">Actualizar</a>
+      <td><a href="{{path('deleteVol',{'username':vol.username})}}" id="link">Borrar</a></td>
   </tr>
   {% endfor %}
 </table>
@@ -41,6 +41,6 @@ Lista de Alumnos
   th{text-align: center; background-color: #343A40; color:#fff;padding-top:0.3%; padding-bottom: 0.3%;border: 1px solid #C1C3D1;}
   td{border-bottom: 1px solid #C1C3D1; text-align: center;padding-bottom:0.3%; padding-top: 0.3%; color: #343A40;}
   td a{color: #343A40; text-decoration: none;}
-  td a:hover{color: #00368b; text-decoration: none; }
+  td a:hover{color: #00368b; text-decoration: none;}
 </style>
 {% endblock %}

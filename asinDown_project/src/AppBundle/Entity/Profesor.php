@@ -87,7 +87,7 @@ class Profesor
      *
      * @param string $password
      *
-     * @return Alumno
+     * @return Profesor
      */
     public function setPassword($password)
     {
