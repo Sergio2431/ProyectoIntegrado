@@ -13,7 +13,15 @@ class AlumnoType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('username')->add('password')->add('nombre')->add('apellidos')->add('diversidad')->add('telefono')->add('direccion')->add('correo');
+        $builder
+        ->add('username')
+        ->add('password')
+        ->add('nombre')
+        ->add('apellidos')
+        ->add('diversidad')
+        ->add('telefono')
+        ->add('direccion')
+        ->add('correo');
     }/**
      * {@inheritdoc}
      */
