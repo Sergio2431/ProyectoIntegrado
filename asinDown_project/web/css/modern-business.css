@@ -36,6 +36,10 @@
     width: 50px;
   }
 
+  .fas{
+    color: #00368b !important;
+  }
+
   /* Footer */
 
   .titulos-footer{
