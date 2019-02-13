@@ -32,6 +32,10 @@
     margin-bottom: 52px;
   }
 
+  .menu-responsive{
+    width: 50px;
+  }
+
   /* Footer */
 
   .titulos-footer{
@@ -120,18 +124,13 @@
 
 /* Página de Perfil */
 
-    .containerPerfil {
-      margin-top: 100px;
-  }
-
   .containerFormulario{
       margin: 24px 0 12px 0;
   }
 
   .imagen-Perfil{
-      width: 300px;
-      height: 300px;
-      margin-left: 50px;
+      width: 100%;
+      margin-left: 10px;
       margin-bottom: 30px;
   }
 
