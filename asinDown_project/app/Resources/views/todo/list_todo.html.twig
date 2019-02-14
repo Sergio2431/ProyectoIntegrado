@@ -8,6 +8,35 @@ Lista Asignaturas
 {% block body %}
 
 <table>
+<h1>Lista de Aula</h1>
+<tr class="title">
+    <th>ID</th>
+    <th>Número de Aula</th>
+</tr>
+  {% for au in aula_todo %}
+
+  <tr class="cont">
+      <td>{{ au.id }}</td>
+      <td>{{ au.numAula }}</td>
+  {% endfor %}
+</table>
+
+<table>
+<h1>Lista de Programas</h1>
+<tr class="title">
+    <th>ID</th>
+    <th>Nombre</th>
+</tr>
+  {% for prog in programa_todo %}
+
+  <tr class="cont">
+      <td>{{ prog.id }}</td>
+      <td>{{ prog.nombre }}</td>
+  </tr>
+  {% endfor %}
+</table>
+
+<table>
 <h1>Lista de Asignatura</h1>
 <tr class="title">
     <th>Nombre de Usuario</th>
@@ -19,7 +48,7 @@ Lista Asignaturas
     <th>Dirección</th>
     <th>Correo</th>
 </tr>
-  {% for asig in asignatura %}
+  {% for asig in asignatura_todo %}
 
   <tr class="cont">
       <td>{{ asig.id }}</td>
@@ -43,7 +72,7 @@ Lista Asignaturas
     <th>Dirección</th>
     <th>Correo</th>
 </tr>
-  {% for pro in profesor %}
+  {% for pro in profesor_todo %}
 
   <tr class="cont">
       <td>{{ pro.username }}</td>
@@ -53,26 +82,11 @@ Lista Asignaturas
       <td>{{ pro.telefono }}</td>
       <td>{{ pro.direccion }}</td>
       <td>{{ pro.correo}}</td>
-      <td><a href="{{path('updateProf',{'username':pro.username})}}" id="link">Actualizar</a>
-      <td><a href="{{path('deleteProf',{'username':pro.username})}}" id="link">Borrar</a></td>
   </tr>
   {% endfor %}
 </table>
 
-<table>
-<h1>Lista de Programas</h1>
-<tr class="title">
-    <th>ID</th>
-    <th>Nombre</th>
-</tr>
-  {% for prog in programa %}
 
-  <tr class="cont">
-      <td>{{ prog.id }}</td>
-      <td>{{ prog.nombre }}</td>
-  </tr>
-  {% endfor %}
-</table>
 <table>
 <h1>Lista de Voluntarios</h1>
 <tr class="title">
@@ -85,7 +99,7 @@ Lista Asignaturas
     <th>Dirección</th>
     <th>Correo</th>
 </tr>
-  {% for vol in voluntario %}
+  {% for vol in voluntario_todo %}
 
   <tr class="cont">
       <td>{{ vol.username }}</td>
@@ -96,8 +110,6 @@ Lista Asignaturas
       <td>{{ vol.telefono }}</td>
       <td>{{ vol.direccion }}</td>
       <td>{{ vol.correo}}</td>
-      <td><a href="{{path('updateVol',{'username':vol.username})}}" id="link">Actualizar</a>
-      <td><a href="{{path('deleteVol',{'username':vol.username})}}" id="link">Borrar</a></td>
   </tr>
   {% endfor %}
 </table>
@@ -113,7 +125,7 @@ Lista Asignaturas
     <th>Dirección</th>
     <th>Correo</th>
 </tr>
-  {% for almn in alumno %}
+  {% for almn in alumno_todo %}
 
   <tr class="cont">
       <td>{{ almn.username }}</td>
@@ -124,19 +136,7 @@ Lista Asignaturas
       <td>{{ almn.telefono }}</td>
       <td>{{ almn.direccion }}</td>
       <td>{{ almn.correo}}</td>
-      <td><a href="{{path('update',{'username':almn.username})}}">Actualizar</a>
-      <td><a href="{{path('delete',{'username':almn.username})}}">Borrar</a></td>
   </tr>
   {% endfor %}
 </table>
-
-
-<style>
-  h1{text-align: center; margin-top: 5.6%; margin-bottom: 2%;}
-  table{background-color: #ebebeb; width: 98%; margin-left: 1%;margin-bottom: 2%;}
-  th{text-align: center; background-color: #343A40; color:#fff;padding-top:0.3%; padding-bottom: 0.3%;border: 1px solid #C1C3D1;}
-  td{border-bottom: 1px solid #C1C3D1; text-align: center;padding-bottom:0.3%; padding-top: 0.3%; color: #343A40;}
-  td a{color: #343A40; text-decoration: none;}
-  td a:hover{color: #00368b; text-decoration: none; }
-</style>
 {% endblock %}

@@ -12,6 +12,8 @@ use AppBundle\Entity\Asignatura;
 use AppBundle\Form\AsignaturaType;
 use AppBundle\Entity\Aula;
 use AppBundle\Form\AulaType;
+use AppBundle\Entity\Programa;
+use AppBundle\Form\ProgramaType;
 use AppBundle\Entity\Profesor;
 use AppBundle\Form\ProfesorType;
 use AppBundle\Entity\Voluntario;
@@ -32,16 +34,25 @@ public function listodo(Request $request)
     */
     public function listaTodoAction(Request $request){
       $repository = $this->getDoctrine()->getRepository(Asignatura::class);
-      $Asignatura = $repository->findAll();
+      $asignatura_todo = $repository->findAll();
 
       $repository = $this->getDoctrine()->getRepository(Aula::class);
-      $aula = $repository->findAll();
+      $aula_todo = $repository->findAll();
 
-      $repository = $this->getDoctrine()->getRepository(Alumno::class);
-      $alumno = $repository->findAll();
+      $repository = $this->getDoctrine()->getRepository(Programa::class);
+      $programa_todo = $repository->findAll();
+
+      $repository = $this->getDoctrine()->getRepository(Profesor::class);
+      $profesor_todo = $repository->findAll();
 
       $repository = $this->getDoctrine()->getRepository(Voluntario::class);
-      $voluntario = $repository->findAll();
-      return $this->render('todo/list_todo.html.twig',array('voluntario' => $voluntario, 'alumno' => $alumno, 'asignatura' => $Asignatura, 'aula' => $aula));
+      $voluntario_todo = $repository->findAll();
+
+      $repository = $this->getDoctrine()->getRepository(Alumno::class);
+      $alumno_todo = $repository->findAll();
+
+      $repository = $this->getDoctrine()->getRepository(Voluntario::class);
+      $voluntario_todo = $repository->findAll();
+      return $this->render('todo/list_todo.html.twig',array('profesor_todo' => $profesor_todo, 'voluntario_todo' => $voluntario_todo, 'alumno_todo' => $alumno_todo, 'asignatura_todo' => $asignatura_todo, 'programa_todo' => $programa_todo, 'aula_todo' => $aula_todo));
     }
 }
