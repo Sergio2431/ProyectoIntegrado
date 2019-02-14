@@ -13,7 +13,7 @@ class AlumnoController extends Controller
 {
 
     /**
-    *@Route("/list/", name="list")
+    *@Route("/listAlumn/", name="listAlumn")
     */
     public function listaAction(Request $request){
       $repository = $this->getDoctrine()->getRepository(Alumno::class);
@@ -22,7 +22,7 @@ class AlumnoController extends Controller
     }
 
     /**
-    *@Route("/update/{username}", name="update")
+    *@Route("/updateAlumn/{username}", name="updateAlumn")
     */
 
     public function ActuaAction(Request $request,$username)
@@ -52,7 +52,7 @@ class AlumnoController extends Controller
               ));
           }
           /**
-          * @Route("/delete/{username}", name="delete")
+          * @Route("/deleteAlumn/{username}", name="deleteAlumn")
           */
           public function deleteAction($username)
           {

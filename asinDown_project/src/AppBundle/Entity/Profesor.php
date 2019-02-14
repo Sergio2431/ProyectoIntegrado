@@ -17,6 +17,8 @@ class Profesor
      *
      * @ORM\Column(name="username", type="string")
      * @ORM\Id
+     * @ORM\ManyToOne(targetEntity="Asignatura", inversedBy="username_profesor")
+     * @ORM\JoinColumn(name="Profesor_username", referencedColumnName="username")
      */
     private $username;
 

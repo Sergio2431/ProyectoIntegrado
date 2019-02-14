@@ -18,6 +18,8 @@ class Aula
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\ManyToMany(targetEntity="Asignatura", inversedBy="id_aula")
+     * @ORM\JoinColumn(name="aula_id", referencedColumnName="id")
      */
     private $id;
 
@@ -28,15 +30,6 @@ class Aula
      */
     private $numAula;
 
-     /**
-     * @ORM\OneToMany(targetEntity="Asignatura", mappedBy="aula")
-     */
-    private $asignatura;
-
-    public function __construct()
-    {
-        $this->asignatura = new ArrayCollection();
-    }
 
 
 

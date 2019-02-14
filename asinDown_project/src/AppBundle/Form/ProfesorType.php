@@ -20,13 +20,14 @@ class ProfesorType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-        ->add('username')
-        ->add('password')
-        ->add('nombre')
-        ->add('apellidos')
-        ->add('telefono')
-        ->add('direccion')
-        ->add('correo')
+        ->add('username', TextType::class, array(
+        'attr' => array('readonly' => true)))
+        ->add('password', PasswordType::class)
+        ->add('nombre', TextType::class)
+        ->add('apellidos', TextType::class)
+        ->add('telefono', TelType::class)
+        ->add('direccion', TextType::class)
+        ->add('correo', EmailType::class)
         ->add('save', SubmitType::class, array('label' => 'Actualizar'));
 
     }
