@@ -105,4 +105,27 @@ public function listadoPrograma(Request $request)
         $voluntario_todo = $repository->findAll();
         return $this->render('todo/list_todoProfesor.html.twig',array( 'profesor_todo' => $profesor_todo, 'voluntario_todo' => $voluntario_todo, 'alumno_todo' => $alumno_todo));
       }
+      /**
+     * @Route("/listadoAlumno/", name="listadoAlumno")
+     */
+    public function listadoAlumno(Request $request)
+    {
+        // replace this example code with whatever you need
+        return $this->render('todo/list_todo.html.twig');
+    }
+        /**
+        *@Route("/listadoAlumno/", name="listadoAlumno")
+        */
+        public function listadoAlumnoAction(Request $request){
+          $repository = $this->getDoctrine()->getRepository(Asignatura::class);
+          $asignatura_todo = $repository->findAll();
+
+          $repository = $this->getDoctrine()->getRepository(Aula::class);
+          $aula_todo = $repository->findAll();
+
+          $repository = $this->getDoctrine()->getRepository(Programa::class);
+          $programa_todo = $repository->findAll();
+
+          return $this->render('todo/list_todoAlumno.html.twig',array('asignatura_todo' => $asignatura_todo, 'programa_todo' => $programa_todo, 'aula_todo' => $aula_todo));
+        }
 }

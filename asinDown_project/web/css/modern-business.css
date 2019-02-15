@@ -61,3 +61,6 @@
   .box button{margin-left: 34%; margin-top: 6%; padding: 2% 6%;
     background-color: #00368b; color: #ebebeb; border-radius: 8px;}
   input#voluntario_disponibilidad{ margin-right:60%; width: 15px; text-align: left;}
+
+  /*COLLAPSE*/
+  .panel-title a{color: black; text-decoration: none;}

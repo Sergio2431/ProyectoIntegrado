@@ -19,7 +19,6 @@ Lista Todo
       </div>
       <div id="collapse1" class="panel-collapse collapse">
         <div class="panel-body"><table>
-        <h1>Lista de Profesores</h1>
         <tr class="title">
             <th>Nombre de Usuario</th>
             <th>Contraseña</th>
@@ -39,6 +38,8 @@ Lista Todo
               <td>{{ pro.telefono }}</td>
               <td>{{ pro.direccion }}</td>
               <td>{{ pro.correo}}</td>
+              <td><a href="{{path('updateProf',{'username':pro.username})}}" id="link">Actualizar</a>
+              <td><a href="{{path('deleteProf',{'username':pro.username})}}" id="link">Borrar</a></td>
           </tr>
           {% endfor %}
         </table></div>
@@ -57,7 +58,6 @@ Lista Todo
       </div>
       <div id="collapse2" class="panel-collapse collapse">
         <div class="panel-body"><table>
-        <h1>Lista de Voluntarios</h1>
         <tr class="title">
             <th>Nombre de Usuario</th>
             <th>Contraseña</th>
@@ -97,7 +97,6 @@ Lista Todo
       </div>
       <div id="collapse3" class="panel-collapse collapse">
         <div class="panel-body"><table>
-        <h1>Lista de Alumnos</h1>
         <tr class="title">
             <th>Nombre de Usuario</th>
             <th>Contraseña</th>
@@ -137,7 +136,6 @@ Lista Todo
       </div>
       <div id="collapse4" class="panel-collapse collapse">
         <div class="panel-body"><table>
-        <h1>Lista de Aula</h1>
         <tr class="title">
             <th>ID</th>
             <th>Número de Aula</th>
@@ -163,7 +161,6 @@ Lista Todo
       </div>
       <div id="collapse5" class="panel-collapse collapse">
         <div class="panel-body"><table>
-        <h1>Lista de Programas</h1>
         <tr class="title">
             <th>ID</th>
             <th>Nombre</th>
@@ -190,16 +187,14 @@ Lista Todo
       </div>
       <div id="collapse6" class="panel-collapse collapse">
         <div class="panel-body"><table>
-        <h1>Lista de Asignatura</h1>
         <tr class="title">
-            <th>Nombre de Usuario</th>
-            <th>Contraseña</th>
+            <th>ID</th>
+            <th>ID Aula</th>
             <th>Nombre</th>
-            <th>Apellidos</th>
-            <th>Diversidad</th>
-            <th>Telefono</th>
-            <th>Dirección</th>
-            <th>Correo</th>
+            <th>Profesor</th>
+            <th>Programa</th>
+            <th>Voluntario</th>
+
         </tr>
           {% for asig in asignatura_todo %}
 
