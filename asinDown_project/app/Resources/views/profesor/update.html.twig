@@ -2,22 +2,15 @@
 {% extends 'base.html.twig' %}
 {# TITULO #}
 {% block title %}
-Pagina principal
+Actualizar Profesor
 {% endblock %}
 {# CONTENIDO #}
 {% block body %}
 <br>
 <div class="box">
-  <h3>Actualizar</h3>
+  <h3>Actualizar Profesor</h3>
 {{ form_start(form) }}
 {{ form_widget(form) }}
 {{ form_end(form) }}
 </div>
-<br>
-<style>
-h3{margin-bottom: 6%; margin-left: 22%;}
-.box{width: 30%; background-color: #ebebeb; margin-left: 35%; padding-top: 2%; padding-bottom: 3%; padding-left: 5%; border-radius: 8px;}
-.box input{float:right; margin-right: 20%; width: 54%;}
-.box button{margin-left: 24%; margin-top: 6%; padding: 2% 6%; background-color: #00368b; color: #ebebeb; border-radius: 8px;}
-</style>
 {% endblock %}

@@ -55,4 +55,54 @@ public function listodo(Request $request)
       $voluntario_todo = $repository->findAll();
       return $this->render('todo/list_todo.html.twig',array('profesor_todo' => $profesor_todo, 'voluntario_todo' => $voluntario_todo, 'alumno_todo' => $alumno_todo, 'asignatura_todo' => $asignatura_todo, 'programa_todo' => $programa_todo, 'aula_todo' => $aula_todo));
     }
+
+
+
+  /**
+ * @Route("/listadoPrograma/", name="listadoPrograma")
+ */
+public function listadoPrograma(Request $request)
+{
+    // replace this example code with whatever you need
+    return $this->render('todo/list_todo.html.twig');
+}
+    /**
+    *@Route("/listadoPrograma/", name="listadoPrograma")
+    */
+    public function listadoProgramaAction(Request $request){
+      $repository = $this->getDoctrine()->getRepository(Asignatura::class);
+      $asignatura_todo = $repository->findAll();
+
+      $repository = $this->getDoctrine()->getRepository(Aula::class);
+      $aula_todo = $repository->findAll();
+
+      $repository = $this->getDoctrine()->getRepository(Programa::class);
+      $programa_todo = $repository->findAll();
+
+      return $this->render('todo/list_todoPrograma.html.twig',array('asignatura_todo' => $asignatura_todo, 'programa_todo' => $programa_todo, 'aula_todo' => $aula_todo));
+    }
+    /**
+   * @Route("/listadoPro/", name="listadoPro")
+   */
+  public function listado(Request $request)
+  {
+      // replace this example code with whatever you need
+      return $this->render('todo/list_todo.html.twig');
+  }
+      /**
+      *@Route("/listadoPro/", name="listadoPro")
+      */
+      public function listadoTodoAction(Request $request){
+
+
+        $repository = $this->getDoctrine()->getRepository(Profesor::class);
+        $profesor_todo = $repository->findAll();
+
+        $repository = $this->getDoctrine()->getRepository(Alumno::class);
+        $alumno_todo = $repository->findAll();
+
+        $repository = $this->getDoctrine()->getRepository(Voluntario::class);
+        $voluntario_todo = $repository->findAll();
+        return $this->render('todo/list_todoProfesor.html.twig',array( 'profesor_todo' => $profesor_todo, 'voluntario_todo' => $voluntario_todo, 'alumno_todo' => $alumno_todo));
+      }
 }

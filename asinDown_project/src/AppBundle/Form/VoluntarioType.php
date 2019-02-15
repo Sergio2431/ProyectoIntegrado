@@ -20,14 +20,15 @@ class VoluntarioType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-        ->add('username')
-        ->add('password')
-        ->add('nombre')
-        ->add('apellidos')
-        ->add('correo')
-        ->add('telefono')
-        ->add('direccion')
-        ->add('disponibilidad')
+        ->add('username', TextType::class, array(
+        'attr' => array('readonly' => true)))
+        ->add('password', PasswordType::class)
+        ->add('nombre', TextType::class)
+        ->add('apellidos', TextType::class)
+        ->add('telefono', TelType::class)
+        ->add('direccion', TextType::class)
+        ->add('correo', EmailType::class)
+        ->add('disponibilidad', TextType::class)
         ->add('save', SubmitType::class, array('label' => 'Actualizar'));
     }
 }

@@ -1,0 +1,101 @@
+{# Plantillla de nuestra aplicacion #}
+{% extends 'base.html.twig' %}
+{# TITULO #}
+{% block title %}
+Lista Programa
+{% endblock %}
+{# CONTENIDO #}
+{% block body %}
+
+
+<div class="container">
+  <div class="panel-group">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" href="#collapse1">Aula</a>
+        </h4>
+      </div>
+      <div id="collapse1" class="panel-collapse collapse">
+        <div class="panel-body"><table>
+        <h1>Lista de Aula</h1>
+        <tr class="title">
+            <th>ID</th>
+            <th>Número de Aula</th>
+        </tr>
+          {% for au in aula_todo %}
+
+          <tr class="cont">
+              <td>{{ au.id }}</td>
+              <td>{{ au.numAula }}</td>
+          {% endfor %}
+        </table></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="panel-group">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" href="#collapse2">Programas</a>
+        </h4>
+      </div>
+      <div id="collapse2" class="panel-collapse collapse">
+        <div class="panel-body"><table>
+        <h1>Lista de Programas</h1>
+        <tr class="title">
+            <th>ID</th>
+            <th>Nombre</th>
+        </tr>
+          {% for prog in programa_todo %}
+
+          <tr class="cont">
+              <td>{{ prog.id }}</td>
+              <td>{{ prog.nombre }}</td>
+          </tr>
+          {% endfor %}
+        </table></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="panel-group">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" href="#collapse3">Asignatura</a>
+        </h4>
+      </div>
+      <div id="collapse3" class="panel-collapse collapse">
+        <div class="panel-body"><table>
+        <h1>Lista de Asignatura</h1>
+        <tr class="title">
+            <th>Nombre de Usuario</th>
+            <th>Contraseña</th>
+            <th>Nombre</th>
+            <th>Apellidos</th>
+            <th>Diversidad</th>
+            <th>Telefono</th>
+            <th>Dirección</th>
+            <th>Correo</th>
+        </tr>
+          {% for asig in asignatura_todo %}
+
+          <tr class="cont">
+              <td>{{ asig.id }}</td>
+              <td>{{ asig.id_aula }}</td>
+              <td>{{ asig.nombre }}</td>
+              <td>{{ asig.username_profesor }}</td>
+              <td>{{ asig.id_programa }}</td>
+              <td>{{ asig.username_voluntario }}</td>
+          </tr>
+          {% endfor %}
+        </table></div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
