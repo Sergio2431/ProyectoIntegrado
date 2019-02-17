@@ -1,0 +1,18 @@
+{# Plantillla de nuestra aplicacion #}
+{% extends 'base.html.twig' %}
+{# TITULO #}
+{% block title %}
+Lista Todo
+{% endblock %}
+{# CONTENIDO #}
+{% block body %}
+<a href="../listadoPro"><img src="https://usercontent1.hubstatic.com/7886634_f520.jpg" class="img"></a>
+<a href="../listadoPro"><img src="https://cdn.pixabay.com/photo/2016/02/09/05/32/red-1188345_960_720.jpg" class="img"></a>
+{% block stylesheets %}
+<style>
+body{height:200px;}
+.img{width:49.5%; height:300px; text-align:center;}
+.div2{background-color:red;width:49.5%;float:right; height:100px; text-align:center;padding-top:5%;}
+</style>
+{% endblock %}
+{% endblock %}
