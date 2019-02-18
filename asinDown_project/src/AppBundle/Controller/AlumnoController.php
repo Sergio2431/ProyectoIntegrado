@@ -44,7 +44,7 @@ class AlumnoController extends Controller
                         $entityManager = $this->getDoctrine()->getManager();
                         $entityManager->persist($Alumno);
                         $entityManager->flush();
-                        return $this->redirectToRoute('list');
+                        return $this->redirectToRoute('listadoPro');
                       }
 
               return $this->render('alumno/update.html.twig', array(
@@ -61,12 +61,12 @@ class AlumnoController extends Controller
             $Alumno = $form->getRepository('AppBundle:Alumno')->find($username);
 
             if (!$Alumno) {
-        return $this->redirectToRoute('list');
+        return $this->redirectToRoute('listadoPro');
       }
 
       $form->remove($Alumno);
       $form->flush();
 
-      return $this->redirectToRoute('list');
+      return $this->redirectToRoute('listadoPro');
     }
 }

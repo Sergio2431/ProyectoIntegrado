@@ -30,7 +30,7 @@ public function listodo(Request $request)
     return $this->render('todo/list_todo.html.twig');
 }
     /**
-    *@Route("/listodo/", name="listodo")
+    *@Route("/listado/", name="listodo")
     */
     public function listaTodoAction(Request $request){
       $repository = $this->getDoctrine()->getRepository(Asignatura::class);

@@ -44,7 +44,7 @@ class VoluntarioController extends Controller
                         $entityManager = $this->getDoctrine()->getManager();
                         $entityManager->persist($Voluntario);
                         $entityManager->flush();
-                        return $this->redirectToRoute('listv');
+                        return $this->redirectToRoute('listadoPro');
                       }
 
               return $this->render('voluntario/update.html.twig', array(
@@ -61,12 +61,12 @@ class VoluntarioController extends Controller
             $Voluntario = $form->getRepository('AppBundle:Voluntario')->find($username);
 
             if (!$Voluntario) {
-        return $this->redirectToRoute('listv');
+        return $this->redirectToRoute('listadoPro');
       }
 
       $form->remove($Voluntario);
       $form->flush();
 
-      return $this->redirectToRoute('listv');
+      return $this->redirectToRoute('listadoPro');
     }
 }

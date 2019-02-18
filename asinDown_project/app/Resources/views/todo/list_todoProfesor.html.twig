@@ -35,6 +35,8 @@ Lista Profesores
               <td>{{ pro.telefono }}</td>
               <td>{{ pro.direccion }}</td>
               <td>{{ pro.correo}}</td>
+              <td><a href="{{path('updateProf',{'username':pro.username})}}" id="link">Actualizar</a>
+              <td><a href="{{path('deleteProf',{'username':pro.username})}}" id="link">Borrar</a></td>
           </tr>
           {% endfor %}
         </table></div>
@@ -74,6 +76,8 @@ Lista Profesores
               <td>{{ vol.telefono }}</td>
               <td>{{ vol.direccion }}</td>
               <td>{{ vol.correo}}</td>
+              <td><a href="{{path('updateVol',{'username':vol.username})}}" id="link">Actualizar</a>
+              <td><a href="{{path('deleteVol',{'username':vol.username})}}" id="link">Borrar</a></td>
           </tr>
           {% endfor %}
         </table></div>
@@ -113,6 +117,8 @@ Lista Profesores
               <td>{{ almn.telefono }}</td>
               <td>{{ almn.direccion }}</td>
               <td>{{ almn.correo}}</td>
+              <td><a href="{{path('updateAlumn',{'username':almn.username})}}">Actualizar</a>
+              <td><a href="{{path('deleteAlumn',{'username':almn.username})}}">Borrar</a></td>
           </tr>
           {% endfor %}
         </table></div>

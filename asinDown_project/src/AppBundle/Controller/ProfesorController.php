@@ -44,7 +44,7 @@ class ProfesorController extends Controller
                         $entityManager = $this->getDoctrine()->getManager();
                         $entityManager->persist($Profesor);
                         $entityManager->flush();
-                        return $this->redirectToRoute('listProf');
+                        return $this->redirectToRoute('listadoPro');
                       }
 
               return $this->render('profesor/update.html.twig', array(
@@ -61,12 +61,12 @@ class ProfesorController extends Controller
             $Profesor = $form->getRepository('AppBundle:Profesor')->find($username);
 
             if (!$Profesor) {
-        return $this->redirectToRoute('listProf');
+        return $this->redirectToRoute('listadoPro');
       }
 
       $form->remove($Profesor);
       $form->flush();
 
-      return $this->redirectToRoute('listProf');
+      return $this->redirectToRoute('listadoPro');
     }
 }
