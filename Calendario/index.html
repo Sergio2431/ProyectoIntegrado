@@ -1,12 +1,6 @@
-{# Plantillla de nuestra aplicacion #}
-{% extends 'base.html.twig' %}
-{# TITULO #}
-{% block title %}
-Pagina principal
-{% endblock %}
-{# CONTENIDO #}
-{% block body %}
-
+<!DOCTYPE html>
+<html>
+<head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Calendario</title>
@@ -54,11 +48,11 @@ Pagina principal
 
                 header:{
 
-                    left: 'today, prev, next',
+                    left: 'today, prev, next, miBoton',
 
                     center: 'title',
 
-                    right: 'month, agendaWeek, agendaDay'
+                    right: 'month,basicWeek, basicDay, agendaWeek, agendaDay'
                 },
                 customButtons: {
 
@@ -74,7 +68,6 @@ Pagina principal
 
 
                     $("#txtFecha").val(date.format());
-                    $("#txtFechaFin").val(date.format());
 
                     $("#ModalEventos").modal();
 
@@ -99,11 +92,6 @@ Pagina principal
 
                     $('#txtFecha').val(FechaHora[0]);
                     $('#txtHora').val(FechaHora[1]);
-
-                    FechaHoraFin= calEvent.end._i.split(" ");
-
-                    $('#txtFechaFin').val(FechaHoraFin[0]);
-                    $('#txtHoraFin').val(FechaHoraFin[1]);
 
                     $('#ModalEventos').modal();
                   
@@ -156,26 +144,18 @@ Pagina principal
 
               <div class="form-row">
                     
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-8">
 
                     <label> Titulo: </label>
                     <input type="text" id="txtTitulo" name="txtTitulo" class="form-control" placeholder="Introduce un titulo"/> <br/>
 
                 </div>
 
-                <div class="form-group col-md-3">
-                  Hora Inicio: <input type="text" id="txtHora" value="10:30" class="form-control"/> <br/>
+                <div class="form-group col-md-4">
+                  Hora: <input type="text" id="txtHora" value="10:30" class="form-control"/> <br/>
                 </div>
+            </div>
 
-                <div class="form-group col-md-3">
-                  Hora Final: <input type="text" id="txtHoraFin" value="11:30" class="form-control"/> <br/>
-                </div>
-            </div>
-            <div class="form-group">
-                    <label>Fecha Final: </label>  
-                    <input type="text" id="txtFechaFin" name="txtFechaFin" />
-      
-            </div>
             <div class="form-group">
 
               <label>Descripcion:</label>  
@@ -240,7 +220,7 @@ Pagina principal
                 color:$('#txtColor').val(),
                 descripcion:$('#txtDescripcion').val(),
                 textColor:"FFFFFF",
-                end:$('#txtFechaFin').val() + " " + $('#txtHoraFin').val()
+                end:$('#txtFecha').val() + " " + $('#txtHora').val()
 
             };
 
@@ -277,5 +257,5 @@ Pagina principal
 
         }
       </script>
-      
-{% endblock %} 
+</body>
+</html>
