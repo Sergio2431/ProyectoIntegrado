@@ -25,13 +25,13 @@ class Usuario implements UserInterface
      * 
      * Un Usuario tiene un alumno o un profesor o un voluntario
      * 
-     * @ORM\OneToOne(targetEntity="Alumno", inversedBy="usuario")
+     * @ORM\OneToMany(targetEntity="Alumno", inversedBy="username")
      * @ORM\JoinColumn(name="alumno_username", referencedColumnName="username")
      * 
-     * @ORM\OneToOne(targetEntity="Profesor", inversedBy="usuario")
+     * @ORM\OneToMany(targetEntity="Profesor", inversedBy="username")
      * @ORM\JoinColumn(name="profesor_username", referencedColumnName="username")
      * 
-     * @ORM\OneToOne(targetEntity="Voluntario", inversedBy="usuario")
+     * @ORM\OneToMany(targetEntity="Voluntario", inversedBy="username")
      * @ORM\JoinColumn(name="voluntario_username", referencedColumnName="username")
      */
     private $username;
@@ -40,15 +40,6 @@ class Usuario implements UserInterface
      * @var string
      *
      * @ORM\Column(name="password", type="string", length=255)
-     * 
-     * @ORM\OneToOne(targetEntity="Alumno", inversedBy="usuario")
-     * @ORM\JoinColumn(name="alumno_password", referencedColumnName="username")
-     * 
-     * @ORM\OneToOne(targetEntity="Profesor", inversedBy="usuario")
-     * @ORM\JoinColumn(name="profesor_password", referencedColumnName="username")
-     *      
-     * @ORM\OneToOne(targetEntity="Voluntario", inversedBy="usuario")
-     * @ORM\JoinColumn(name="voluntario_password", referencedColumnName="username")
      * 
      */
     private $password;

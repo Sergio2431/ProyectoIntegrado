@@ -22,8 +22,8 @@ class Voluntario implements UserInterface
      * @ORM\Column(name="username", type="string")
      * @ORM\Id
      * 
-     * One Customer has One Cart.
-     * @ORM\OneToOne(targetEntity="Usuario", mappedBy="voluntario")
+     * un voluntario tiene un usuario
+     * @ORM\ManyToOne(targetEntity="Usuario", mappedBy="username")
      */
     private $username;
 
@@ -32,8 +32,7 @@ class Voluntario implements UserInterface
      *
      * @ORM\Column(name="password", type="string")
      * 
-     * @ORM\OneToOne(targetEntity="Usuario", mappedBy="voluntario")
-     * 
+     *       
      */
     private $password;
 
