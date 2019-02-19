@@ -3,6 +3,8 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping\ManytoMany;
 
 /**
  * Programa
@@ -25,18 +27,10 @@ class Programa
      * @var string
      *
      * @ORM\Column(name="nombre", type="string", length=255)
+     * @ManyToMany(targetEntity="Asignatura", mappedBy="nombre_programa")
+     * @ORM\JoinColumn(name="nombre_nombreprograma", referencedColumnName="id")
      */
     private $nombre;
-
-    /**
-    * @ORM\OneToMany(targetEntity="Asignatura", mappedBy="programa")
-    */
-   private $programa;
-
-   public function __construct()
-   {
-       $this->programa = new ArrayCollection();
-   }
 
     /**
      * Get id.
@@ -70,5 +64,10 @@ class Programa
     public function getNombre()
     {
         return $this->nombre;
+    }
+
+    public function __toString()
+    {
+      return $this->nombre;
     }
 }

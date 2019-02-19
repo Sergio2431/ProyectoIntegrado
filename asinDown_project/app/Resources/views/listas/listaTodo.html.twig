@@ -8,7 +8,7 @@ Lista Todo
 {% block body %}
 
 
-
+<h1>Profesor</h1>
 <div class="container">
   <div class="panel-group">
     <div class="panel panel-default">
@@ -79,6 +79,8 @@ Lista Todo
               <td>{{ vol.telefono }}</td>
               <td>{{ vol.direccion }}</td>
               <td>{{ vol.correo}}</td>
+              <td><a href="{{path('updateVol',{'username':vol.username})}}" id="link">Actualizar</a>
+              <td><a href="{{path('deleteVol',{'username':vol.username})}}" id="link">Borrar</a></td>
           </tr>
           {% endfor %}
         </table></div>
@@ -118,6 +120,8 @@ Lista Todo
               <td>{{ almn.telefono }}</td>
               <td>{{ almn.direccion }}</td>
               <td>{{ almn.correo}}</td>
+              <td><a href="{{path('updateAlumn',{'username':almn.username})}}" id="link">Actualizar</a>
+              <td><a href="{{path('deleteAlumn',{'username':almn.username})}}" id="link">Borrar</a></td>
           </tr>
           {% endfor %}
         </table></div>
@@ -125,7 +129,7 @@ Lista Todo
     </div>
   </div>
 </div>
-
+<h1>Programa</h1>
 <div class="container">
   <div class="panel-group">
     <div class="panel panel-default">
@@ -189,7 +193,7 @@ Lista Todo
         <div class="panel-body"><table>
         <tr class="title">
             <th>ID</th>
-            <th>ID Aula</th>
+            <th>Aula</th>
             <th>Nombre</th>
             <th>Profesor</th>
             <th>Programa</th>
@@ -199,12 +203,12 @@ Lista Todo
           {% for asig in asignatura_todo %}
 
           <tr class="cont">
-              <td>{{ asig.id }}</td>
-              <td>{{ asig.id_aula }}</td>
-              <td>{{ asig.nombre }}</td>
-              <td>{{ asig.username_profesor }}</td>
-              <td>{{ asig.id_programa }}</td>
-              <td>{{ asig.username_voluntario }}</td>
+            <td>{{ asig.id }}</td>
+            <td>{{ asig.aulas }}</td>
+            <td>{{ asig.nombre }}</td>
+            <td>{{ asig.username_profesor }}</td>
+            <td>{{ asig.nombre_programa }}</td>
+            <td>{{ asig.username_voluntario }}</td>
           </tr>
           {% endfor %}
         </table></div>

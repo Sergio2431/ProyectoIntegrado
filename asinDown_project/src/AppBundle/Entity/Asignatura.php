@@ -3,6 +3,8 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping\ManytoMany;
 
 /**
  * Asignatura
@@ -29,11 +31,12 @@ class Asignatura
     private $nombre;
 
     /**
-     * @ORM\Column(name="id_aula", type="string")
-     * @ORM\ManyToMany(targetEntity="Aula", inversedBy="id")
-     * @ORM\JoinColumn(name="aula_id", referencedColumnName="id_aula")
+     * @ORM\Column(name="aulas", type="string")
+     * @ORM\ManyToMany(targetEntity="Aula", inversedBy="numAula")
+     * @ORM\JoinColumn(name="aulas_numAula", referencedColumnName="id")
      */
-    private $id_aula;
+    private $aulas;
+
 
     /**
      * @ORM\Column(name="username_profesor", type="string")
@@ -43,11 +46,11 @@ class Asignatura
     private $username_profesor;
 
     /**
-     * @ORM\Column(name="id_programa", type="string")
-     * @ORM\ManyToOne(targetEntity="Programa", inversedBy="id")
-     * @ORM\JoinColumn(name="id", referencedColumnName="id_programa")
+    * @ORM\Column(name="nombre_programa", type="string")
+    * @ORM\ManyToMany(targetEntity="Programa", inversedBy="nombre")
+    * @ORM\JoinColumn(name="nombreprograma_nombre", referencedColumnName="id")
      */
-    private $id_programa;
+    public $nombre_programa;
 
     /**
      * @ORM\Column(name="username_voluntario", type="string")
@@ -89,33 +92,28 @@ class Asignatura
     {
         return $this->nombre;
     }
-
-
     /**
-     * Set id_aula.
+     * Set aulas.
      *
-     * @param int $id_aula
+     * @param string $aulas
      *
      * @return Asignatura
      */
-    public function setid_aula($id_aula)
+    public function setaulas($aulas)
     {
-        $this->id_aula = $id_aula;
+        $this->aulas = $aulas;
 
         return $this;
     }
 
     /**
-     * Get id_aula.
+     * Get aulas.
      *
-     * @return int
+     * @return string
      */
-    public function getid_aula()
+    public function getaulas()
     {
-        return $this->id_aula;
-    }
-    public function __toString(){
-      return $this->id_aula;
+        return $this->aulas;
     }
     /**
      * Set username_profesor.
@@ -141,28 +139,29 @@ class Asignatura
     }
 
     /**
-     * Set id_programa.
+     * Set nombre_programa.
      *
-     * @param int $id_programa
+     * @param string $nombre_programa
      *
      * @return Asignatura
      */
-    public function setid_programa($id_programa)
+    public function setNombrePrograma($nombre_programa)
     {
-        $this->id_aula = $id_programa;
+        $this->nombre_programa = $nombre_programa;
 
         return $this;
     }
 
     /**
-     * Get id_programa.
+     * Get nombre_programa.
      *
-     * @return int
+     * @return string
      */
-    public function getid_programa()
+    public function getNombrePrograma()
     {
-        return $this->id_programa;
+        return $this->nombre_programa;
     }
+
 
     /**
      * Set username_voluntario.
@@ -186,4 +185,14 @@ class Asignatura
     {
         return $this->username_voluntario;
     }
+
+      public function __construct() {
+          $this->aulas = new \Doctrine\Common\Collections\ArrayCollection();
+          $this->nombre_programa = new \Doctrine\Common\Collections\ArrayCollection();
+        }
+        public function __toString()
+        {
+          return $this->aulas;
+          return $this->nombre_programa;
+        }
 }

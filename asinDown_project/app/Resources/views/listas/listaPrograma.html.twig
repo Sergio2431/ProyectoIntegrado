@@ -7,7 +7,42 @@ Lista Programa
 {# CONTENIDO #}
 {% block body %}
 
+<div class="container">
+  <div class="panel-group">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" href="#collapse3">Asignatura</a>
+        </h4>
+      </div>
+      <div id="collapse3" class="panel-collapse collapse">
+        <div class="panel-body"><table>
+        <tr class="title">
+        <th>ID</th>
+        <th>Aula</th>
+        <th>Nombre Asignatura</th>
+        <th>Profesor</th>
+        <th>Programa</th>
+        <th>Voluntario</th>
+        </tr>
 
+          {% for asig in asignatura_todo %}
+          <tr class="cont">
+              <td>{{ asig.id }}</td>
+              <td>{{ asig.aulas }}</td>
+              <td>{{ asig.nombre }}</td>
+              <td>{{ asig.username_profesor }}</td>
+              <td>{{ asig.nombre_programa }}</td>
+              <td>{{ asig.username_voluntario }}</td>
+          </tr>
+          {% endfor %}
+          <button type="button" name="button"><a href="../nuevaAsignatura">registrar</a></button>
+
+        </table></div>
+      </div>
+    </div>
+  </div>
+</div>
 <div class="container">
   <div class="panel-group">
     <div class="panel panel-default">
@@ -59,38 +94,5 @@ Lista Programa
     </div>
   </div>
 </div>
-<div class="container">
-  <div class="panel-group">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h4 class="panel-title">
-          <a data-toggle="collapse" href="#collapse3">Asignatura</a>
-        </h4>
-      </div>
-      <div id="collapse3" class="panel-collapse collapse">
-        <div class="panel-body"><table>
-        <tr class="title">
-        <th>ID</th>
-        <th>ID Aula</th>
-        <th>Nombre</th>
-        <th>Profesor</th>
-        <th>Programa</th>
-        <th>Voluntario</th>
-        </tr>
-          {% for asig in asignatura_todo %}
 
-          <tr class="cont">
-              <td>{{ asig.id }}</td>
-              <td>{{ asig.id_aula }}</td>
-              <td>{{ asig.nombre }}</td>
-              <td>{{ asig.username_profesor }}</td>
-              <td>{{ asig.id_programa }}</td>
-              <td>{{ asig.username_voluntario }}</td>
-          </tr>
-          {% endfor %}
-        </table></div>
-      </div>
-    </div>
-  </div>
-</div>
 {% endblock %}
