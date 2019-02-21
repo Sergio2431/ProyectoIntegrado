@@ -40,6 +40,12 @@
     color: #00368b !important;
   }
 
+  .nav-item{
+    padding-right: .75rem;
+    padding-left: .75rem;
+
+  }
+
   /* Footer */
 
   .titulos-footer{
@@ -102,6 +108,7 @@
    color: white;
    padding: 14px 20px;
    margin: 8px 0;
+   margin-left: 10px;
    border: none;
    cursor: pointer;
    width: 100%;
@@ -143,4 +150,20 @@
     margin-left: 30px;
   }
 
-/* Iconos de los perfiles */
+  /* Página Registros */
+
+  .col-md-4 {
+    margin-top: 20px;
+  }
+
+  .btn-primary{
+    width: 120px;
+    height: 45px;
+    margin-left: 15px;
+  }
+
+  .btn-danger{
+    width: 120px;
+    height: 45px;
+    margin-left: 465px;
+  }
