@@ -13,6 +13,14 @@ class ProgramaType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nombre');
+        $builder
+        ->add('nombre')
+        ->add('usuarios')
+        ->add('idProfesor')
+        ->add('duracion')
+        ->add('direccion')
+        ->add('horario')
+        ->add('idAlumno')
+          ->add('save', SubmitType::class, array('label' => 'Actualizar'));
     }
 }

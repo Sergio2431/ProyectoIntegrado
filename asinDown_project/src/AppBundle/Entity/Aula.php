@@ -4,7 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\ORM\Mapping\ManytoMany;
+use Doctrine\ORM\Mapping\ManytoOne;
 /**
  * Aula
  *
@@ -25,11 +25,16 @@ class Aula
     /**
      * @var string
      *
-     * @ORM\Column(name="aulas", type="string")
-     * @ManyToMany(targetEntity="Asignatura", mappedBy="aulas")
-     * @ORM\JoinColumn(name="numAula_aulas", referencedColumnName="id")
+     * @ORM\Column(name="numAula", type="string")
      */
     private $numAula;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="idAsig", type="string")
+     */
+    private $idAsig;
 
     /**
      * Get id.
@@ -66,5 +71,28 @@ class Aula
     public function __toString()
     {
       return $this->numAula;
+    }
+
+    /**
+     * Set idAsig.
+     *
+     * @param string $idAsig
+     *
+     * @return Aula
+     */
+    public function setIDAsig($idAsig)
+    {
+        $this->idAsig = $idAsig;
+
+        return $this;
+    }
+    /**
+     * Get idAsig.
+     *
+     * @return string
+     */
+    public function getIDAsig()
+    {
+        return $this->idAsig;
     }
 }

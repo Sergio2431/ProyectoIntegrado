@@ -21,22 +21,23 @@ Lista Programa
         <th>ID</th>
         <th>Aula</th>
         <th>Nombre Asignatura</th>
-        <th>Profesor</th>
+        <th>Usuario</th>
         <th>Programa</th>
-        <th>Voluntario</th>
+        <th>Duración</th>
         </tr>
 
           {% for asig in asignatura_todo %}
           <tr class="cont">
-              <td>{{ asig.id }}</td>
-              <td>{{ asig.aulas }}</td>
-              <td>{{ asig.nombre }}</td>
-              <td>{{ asig.username_profesor }}</td>
-              <td>{{ asig.nombre_programa }}</td>
-              <td>{{ asig.username_voluntario }}</td>
+            <td>{{ asig.id }}</td>
+            <td>{{ asig.aulas }}</td>
+            <td>{{ asig.nombre }}</td>
+            <td>{{ asig.usuarios|join(',') }}</td>
+            <td>{{ asig.NombrePrograma }}</td>
+            <td>{{ asig.duracion }}</td>
+        </tr>
           </tr>
           {% endfor %}
-          <button type="button" name="button"><a href="../nuevaAsignatura">registrar</a></button>
+          <a href="../nuevaAsignatura">registrar</a>
 
         </table></div>
       </div>
@@ -63,6 +64,7 @@ Lista Programa
               <td>{{ au.id }}</td>
               <td>{{ au.numAula }}</td>
           {% endfor %}
+          <a href="../nuevaAula">registrar Aula</a>
         </table></div>
       </div>
     </div>
@@ -80,15 +82,27 @@ Lista Programa
         <div class="panel-body"><table>
         <tr class="title">
             <th>ID</th>
-            <th>Nombre</th>
+            <th>Nombre Programa</th>
+            <th>Nombre Usuario</th>
+            <th>Duración</th>
+            <th>Dirección</th>
+            <th>Horario</th>
+            <th>Tipo de Usuarios</th>
+
         </tr>
           {% for prog in programa_todo %}
 
           <tr class="cont">
               <td>{{ prog.id }}</td>
               <td>{{ prog.nombre }}</td>
+              <td>{{ prog.usuarios|join(',') }}</td>
+              <td>{{ prog.duracion }}</td>
+              <td>{{ prog.direccion }}</td>
+              <td>{{ prog.horario }}</td>
+              <td>{{ prog.usuarios|join(',') }}</td>
           </tr>
           {% endfor %}
+          <a href="../nuevoPrograma">Registrar Programa</a>
         </table></div>
       </div>
     </div>

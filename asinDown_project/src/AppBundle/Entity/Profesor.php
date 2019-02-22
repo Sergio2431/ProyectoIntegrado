@@ -18,7 +18,7 @@ class Profesor
      * @ORM\Column(name="username", type="string")
      * @ORM\Id
      * @ORM\ManyToOne(targetEntity="Asignatura", inversedBy="username_profesor")
-     * @ORM\JoinColumn(name="Profesor_username", referencedColumnName="username")
+     * @ORM\JoinColumn(name="username_Profesor", referencedColumnName="username")
      */
     private $username;
 
@@ -68,6 +68,15 @@ class Profesor
     * @ORM\OneToMany(targetEntity="Asignatura", mappedBy="profesor")
     */
    private $profesor;
+
+   /**
+    * @var string
+    *
+    * @ORM\Column(name="programa", type="string", length=255)
+    * @ManyToOne(targetEntity="Asignatura", mappedBy="profesor_programa")
+    * @ORM\JoinColumn(name="programa_profesor", referencedColumnName="id")
+    */
+   private $programa;
 
    public function __construct()
    {

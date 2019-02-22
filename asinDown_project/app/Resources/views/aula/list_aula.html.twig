@@ -1,0 +1,23 @@
+{# Plantillla de nuestra aplicacion #}
+{% extends 'base.html.twig' %}
+{# TITULO #}
+{% block title %}
+Lista Aulas
+{% endblock %}
+{# CONTENIDO #}
+{% block body %}
+
+<table>
+<h1>Lista de Aula</h1>
+<tr class="title">
+    <th>ID</th>
+    <th>Número de Aula</th>
+</tr>
+  {% for au in Aula %}
+
+  <tr class="cont">
+      <td>{{ au.id }}</td>
+      <td>{{ au.numAula }}</td>
+  {% endfor %}
+</table>
+{% endblock %}

@@ -4,7 +4,8 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\ORM\Mapping\ManytoMany;
+use Doctrine\ORM\Mapping\ManyToMany;
+use Doctrine\ORM\Mapping\ManyToOne;
 
 /**
  * Asignatura
@@ -32,32 +33,29 @@ class Asignatura
 
     /**
      * @ORM\Column(name="aulas", type="string")
-     * @ORM\ManyToMany(targetEntity="Aula", inversedBy="numAula")
+     * @ORM\ManyToOne(targetEntity="Aula")
      * @ORM\JoinColumn(name="aulas_numAula", referencedColumnName="id")
      */
     private $aulas;
 
 
     /**
-     * @ORM\Column(name="username_profesor", type="string")
-     * @ORM\ManyToOne(targetEntity="Profesor", inversedBy="username")
-     * @ORM\JoinColumn(name="Profesor_username", referencedColumnName="username_profesor")
+     * Many Asignaturas have Many Usuarios.
+     * @ORM\ManyToMany(targetEntity="Usuarios", mappedBy="asignaturas")
      */
-    private $username_profesor;
+    private $usuarios;
 
     /**
-    * @ORM\Column(name="nombre_programa", type="string")
-    * @ORM\ManyToMany(targetEntity="Programa", inversedBy="nombre")
+    * @ORM\Column(name="NombrePrograma", type="string")
+    * @ORM\ManyToOne(targetEntity="Programa")
     * @ORM\JoinColumn(name="nombreprograma_nombre", referencedColumnName="id")
      */
-    public $nombre_programa;
+    public $NombrePrograma;
 
     /**
-     * @ORM\Column(name="username_voluntario", type="string")
-     * @ORM\ManyToOne(targetEntity="Voluntario", inversedBy="username")
-     * @ORM\JoinColumn(name="username", referencedColumnName="username_voluntario")
+     * @ORM\Column(name="duracion", type="string")
      */
-    private $username_voluntario;
+    private $duracion;
 
     /**
      * Get id.
@@ -115,84 +113,88 @@ class Asignatura
     {
         return $this->aulas;
     }
+
+
     /**
-     * Set username_profesor.
+     * Set NombrePrograma.
      *
-     * @param string $username_profesor
+     * @param string $NombrePrograma
      *
      * @return Asignatura
      */
-    public function setusername_profesor($username_profesor)
+    public function setNombrePrograma($NombrePrograma)
     {
-        $this->username_profesor = $username_profesor;
-
-        return $this;
-    }
-    /**
-     * Get username_profesor.
-     *
-     * @return string
-     */
-    public function getusername_profesor()
-    {
-        return $this->username_profesor;
-    }
-
-    /**
-     * Set nombre_programa.
-     *
-     * @param string $nombre_programa
-     *
-     * @return Asignatura
-     */
-    public function setNombrePrograma($nombre_programa)
-    {
-        $this->nombre_programa = $nombre_programa;
+        $this->NombrePrograma = $NombrePrograma;
 
         return $this;
     }
 
     /**
-     * Get nombre_programa.
+     * Get NombrePrograma.
      *
      * @return string
      */
     public function getNombrePrograma()
     {
-        return $this->nombre_programa;
+        return $this->NombrePrograma;
     }
 
-
     /**
-     * Set username_voluntario.
+     * Set duracion.
      *
-     * @param string $username_voluntario
+     * @param string $duracion
      *
      * @return Asignatura
      */
-    public function setusername_voluntario($username_voluntario)
+    public function setDuracion($duracion)
     {
-        $this->username_voluntario = $username_voluntario;
+        $this->duracion = $duracion;
 
         return $this;
     }
-    /**
-     * Get username_voluntario.
+     /**
+     * Get duracion.
      *
      * @return string
      */
-    public function getusername_voluntario()
+    public function getDuracion()
     {
-        return $this->username_voluntario;
+        return $this->duracion;
     }
 
-      public function __construct() {
-          $this->aulas = new \Doctrine\Common\Collections\ArrayCollection();
-          $this->nombre_programa = new \Doctrine\Common\Collections\ArrayCollection();
-        }
-        public function __toString()
-        {
-          return $this->aulas;
-          return $this->nombre_programa;
-        }
+    /**
+     * Add usuario.
+     *
+     * @param \AppBundle\Entity\Usuarios $usuario
+     *
+     * @return Asignatura
+     */
+    public function addUsuario(\AppBundle\Entity\Usuarios $usuario)
+    {
+        $this->usuarios[] = $usuario;
+
+        return $this;
+    }
+
+    /**
+     * Remove usuario.
+     *
+     * @param \AppBundle\Entity\Usuarios $usuario
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeUsuario(\AppBundle\Entity\Usuarios $usuario)
+    {
+        return $this->usuarios->removeElement($usuario);
+    }
+
+    /**
+     * Get usuarios.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getUsuarios()
+    {
+        return $this->usuarios;
+    }
 }

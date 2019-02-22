@@ -6,23 +6,19 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use AppBundle\Entity\Alumno;
-use AppBundle\Form\AlumnoType;
+use AppBundle\Entity\Usuarios;
+use AppBundle\Form\UsuariosType;
 use AppBundle\Entity\Asignatura;
 use AppBundle\Form\AsignaturaType;
 use AppBundle\Entity\Aula;
 use AppBundle\Form\AulaType;
 use AppBundle\Entity\Programa;
 use AppBundle\Form\ProgramaType;
-use AppBundle\Entity\Profesor;
-use AppBundle\Form\ProfesorType;
-use AppBundle\Entity\Voluntario;
-use AppBundle\Form\VoluntarioType;
 
 class TodoController extends Controller
 {
   /**
- * @Route("/listodo/", name="listodo")
+ * @Route("/listado/", name="listado")
  */
 public function listodo(Request $request)
 {
@@ -66,21 +62,13 @@ public function listodo(Request $request)
       return $this->render('listas/links.html.twig');
   }
 
-
-  /**
- * @Route("/listadoPrograma/", name="listadoPrograma")
- */
-public function listadoPrograma(Request $request)
-{
-    // replace this example code with whatever you need
-    return $this->render('listas/listaTodo.html.twig');
-}
     /**
     *@Route("/listadoPrograma/", name="listadoPrograma")
     */
     public function listadoProgramaAction(Request $request){
       $repository = $this->getDoctrine()->getRepository(Asignatura::class);
       $asignatura_todo = $repository->findAll();
+      dump($asignatura_todo);
 
       $repository = $this->getDoctrine()->getRepository(Aula::class);
       $aula_todo = $repository->findAll();
@@ -90,53 +78,33 @@ public function listadoPrograma(Request $request)
 
       return $this->render('listas/listaPrograma.html.twig',array('asignatura_todo' => $asignatura_todo, 'programa_todo' => $programa_todo, 'aula_todo' => $aula_todo));
     }
-    /**
-   * @Route("/listadoPro/", name="listadoPro")
-   */
-  public function listado(Request $request)
-  {
-      // replace this example code with whatever you need
-      return $this->render('listas/listaTodo.html.twig');
-  }
+//ESTA DE AQUI
       /**
       *@Route("/listadoPro/", name="listadoPro")
       */
-      public function listadoTodoAction(Request $request){
+      public function listadoProfAction(Request $request){
 
 
-        $repository = $this->getDoctrine()->getRepository(Profesor::class);
-        $profesor_todo = $repository->findAll();
+        $repository = $this->getDoctrine()->getRepository(Usuarios::class);
+        $usuario = $repository->findByTipoUsuario("Profesor");
 
-        $repository = $this->getDoctrine()->getRepository(Alumno::class);
-        $alumno_todo = $repository->findAll();
-
-        $repository = $this->getDoctrine()->getRepository(Voluntario::class);
-        $voluntario_todo = $repository->findAll();
-        return $this->render('listas/listaProfesor.html.twig',array( 'profesor_todo' => $profesor_todo, 'voluntario_todo' => $voluntario_todo, 'alumno_todo' => $alumno_todo));
+        return $this->render('listas/listaProfesor.html.twig',array( 'usuario' => $usuario));
       }
+
+
+
       /**
-     * @Route("/listadoAlumno/", name="listadoAlumno")
-     */
-    public function listadoAlumno(Request $request)
-    {
-        // replace this example code with whatever you need
-        return $this->render('listas/listaTodo.html.twig');
-    }
-        /**
-        *@Route("/listadoAlumno/", name="listadoAlumno")
-        */
-        public function listadoAlumnoAction(Request $request){
-          $repository = $this->getDoctrine()->getRepository(Asignatura::class);
-          $asignatura_todo = $repository->findAll();
+       * @Route("/lincadoVol/", name="lincadoVol")
+       */
+       public function listadoVolAction(Request $request){
 
-          $repository = $this->getDoctrine()->getRepository(Aula::class);
-          $aula_todo = $repository->findAll();
 
-          $repository = $this->getDoctrine()->getRepository(Programa::class);
-          $programa_todo = $repository->findAll();
+         $repository = $this->getDoctrine()->getRepository(Usuarios::class);
+         $usuario = $repository->findByTipoUsuario("Voluntario");
 
-          return $this->render('listas/listaAlumno.html.twig',array('asignatura_todo' => $asignatura_todo, 'programa_todo' => $programa_todo, 'aula_todo' => $aula_todo));
+         return $this->render('listas/listaProfesor.html.twig',array( 'usuario' => $usuario));
         }
+
         //UPDATES
         /**
         *@Route("/updateProf/{username}", name="updateProf")
@@ -312,10 +280,10 @@ public function listadoPrograma(Request $request)
                       $entityManager = $this->getDoctrine()->getManager();
                       $entityManager->persist($nuevo);
                       $entityManager->flush();
-
+                      return $this->redirectToRoute('listadoPrograma');
                     }
 
-                    return $this->render('nuevaAsignatura.html.twig', array(
+                    return $this->render('listas/nuevaAsignatura.html.twig', array(
                       'form' => $form->createView(),
                     ));
                   }
