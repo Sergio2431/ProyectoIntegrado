@@ -3,10 +3,34 @@ namespace AppBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+
+use AppBundle\Entity\Usuario;
+use AppBundle\Form\UsuarioType;
+
+use AppBundle\Entity\Profesor;
+use AppBundle\Form\ProfesorType;
+
+use AppBundle\Entity\Voluntario;
+use AppBundle\Form\VoluntarioType;
+
+use AppBundle\Entity\Aula;
+use AppBundle\Form\AulaType;
+
+use AppBundle\Entity\Asignatura;
+use AppBundle\Form\AsignaturaType;
+
+use AppBundle\Entity\Programa;
+use AppBundle\Form\ProgramaType;
+
+
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+
 class DefaultController extends Controller
 {
     /**
-     * @Route("/calendario", name="calendario")
+     * @Route("/", name="calendario")
      */
     public function indexAction(Request $request)
     {
@@ -50,26 +74,22 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/perfil", name="perfil")
-     */
-    public function perfilAction(Request $request)
+    * @Route("/login", name="login")
+    */
+    public function loginAction(AuthenticationUtils $authenticationUtils)
     {
-        // replace this example code with whatever you need
-        return $this->render('frontal/perfil.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
-        ]);
+        // get the login error if there is one
+        $error = $authenticationUtils->getLastAuthenticationError();
+
+        // last username entered by the user
+        $lastUsername = $authenticationUtils->getLastUsername();
+
+        return $this->render('frontal/login.html.twig', array(
+            'last_username' => $lastUsername,
+                'error'         => $error,
+            ));
     }
 
-    /**
-     * @Route("/login", name="login")
-     */
-    public function loginAction(Request $request)
-    {
-        // replace this example code with whatever you need
-        return $this->render('frontal/login.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
-        ]);
-    }
 
     /**
      * @Route("/restaurarContraseña", name="restaurarContraseña")
@@ -83,37 +103,33 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/registerAlumnos", name="registerAlumnos")
-     */
-    public function registerAlumnosAction(Request $request)
-    {
-        // replace this example code with whatever you need
-        return $this->render('seguridad/register_alumnos.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
-        ]);
-    }
+    * @Route("/registerUsuario", name="registerUsuario")
+    */
+    public function registerAlumnosAction(Request $request, UserPasswordEncoderInterface $passwordEncoder)
+        {
+        // 1) build the form
+        $user = new Usuario();
+        $form = $this->createForm(UsuarioType::class, $user);
+        // 2) handle the submit (will only happen on POST)
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            // 3) Encode the password (you could also do this via Doctrine listener)
+            $password = $passwordEncoder->encodePassword($user, $user->getPlainPassword());
+            $user->setPassword($password);
+            // 4) save the User!
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($user);
+            $entityManager->flush();
+            // ... do any other work - like sending them an email, etc
+            // maybe set a "flash" success message for the user
+            return $this->redirectToRoute('calendario');
+            }
+            return $this->render(
+                'seguridad/register_alumnos.html.twig',
+                array('form' => $form->createView())
+            );
+        }
 
-    /**
-     * @Route("/registerProfesores", name="registerProfesores")
-     */
-    public function registerProfesoresAction(Request $request)
-    {
-        // replace this example code with whatever you need
-        return $this->render('seguridad/register_profesores.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
-        ]);
-    }
-
-    /**
-     * @Route("/registerVoluntarios", name="registerVoluntarios")
-     */
-    public function registerVoluntariosAction(Request $request)
-    {
-        // replace this example code with whatever you need
-        return $this->render('seguridad/register_voluntarios.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
-        ]);
-    }
 
     /**
      * @Route("/registerAulas", name="registerAulas")
@@ -148,4 +164,27 @@ class DefaultController extends Controller
         ]);
     }
 
+    /**
+    * @Route("/perfil", name="perfil")
+    */
+    public function perfilAction(Request $request)
+        {
+        // replace this example code with whatever you need
+
+                  $id = $this->get('security.token_storage')->getToken()->getUser()->getUsername();
+
+
+                  $repository = $this->getDoctrine()->getRepository('AppBundle:Usuario');
+                  $usuario = $repository->find($id);
+
+                    $form = $this-> createForm(UsuarioType::class, $usuario);
+                           $form->handleRequest($request);
+
+
+                   return $this->render('Frontal/perfil.html.twig', array(
+                'form' => $form->createView(),));
+                }
+
+
 }
+

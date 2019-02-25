@@ -14,6 +14,10 @@
   </head>
   <body>
 
+    {% if error %}
+      <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+    
     <header>
       <!-- Navigation -->
       <nav class="navbar fixed-top navbar-expand-lg fixed-top"> <div class="container">
@@ -28,18 +32,15 @@
   <div class="hero-text">
 
     <div class="containerLogin">
-    <form action="/action_page.php">
+    <form action="{{ path('login') }}" method="post"  class="form-signin">
      <div class="imgcontainer">
      <h1 class="tituloInicioSesion"> Inicio de Sesión </h1>
     </div>
 
-      <label for="uname"><b>Usuario</b></label>
-      <input type="text" placeholder="Introduce el usuario" name="uname" required>
+      <input type="text" value="{{ last_username }}" class="form-control" id="username" name="_username" placeholder="Usuario" required="" autofocus="" />
+			<input type="password" class="form-control" id="password" name="_password" placeholder="Contraseña" required=""/>
 
-      <label for="psw"><b>Contraseña</b></label>
-      <input type="password" placeholder="Introduce la contraseña" name="psw" required>
-
-      <button type="submit">Acceder</button>
+      <button name="submit" value="Login" type="submit">Acceder</button>
       <label>
         <input type="checkbox" checked="checked" name="remember"> Recuerdame
       </label>

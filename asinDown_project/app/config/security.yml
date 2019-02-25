@@ -2,7 +2,7 @@
 # https://symfony.com/doc/current/security.html
 security:
     encoders:
-        AppBundle\Entity\Profesor: bcrypt
+        AppBundle\Entity\Usuario: bcrypt
 
     # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
     providers:
@@ -10,7 +10,7 @@ security:
             memory: ~
         my_db_provider:
             entity:
-                class: AppBundle:Profesor
+                class: AppBundle:Usuario
                 property: username
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
@@ -18,15 +18,15 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         admin:
-            pattern: ^/admin
+            pattern: ^/
             provider: my_db_provider
             #http_basic: ~
             anonymous: ~
             form_login:
-                login_path: /admin/login
-                check_path: /admin/login
+                login_path: /login
+                check_path: /login
             logout:
-                path:   /admin/logout
+                path:   /logout/
                 target: /
 
         main:
@@ -39,5 +39,5 @@ security:
             # https://symfony.com/doc/current/security/form_login_setup.html
             #form_login: ~
     access_control:
-            - { path: ^/admin/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-            - { path: ^/admin, roles: ROLE_Admin } 
+            - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+            - { path: ^/admin, roles: ROLE_ADMIN }
