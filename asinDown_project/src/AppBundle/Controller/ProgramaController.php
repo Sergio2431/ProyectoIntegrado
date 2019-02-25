@@ -6,18 +6,21 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use AppBundle\Entity\Programa;
-use AppBundle\Form\ProgramaType;
+use AppBundle\Entity\Usuarios;
+use AppBundle\Form\UsuariosType;
 
 class ProgramaController extends Controller
 {
 
     /**
-    *@Route("/listProg/", name="listProg")
-    */
-    public function listaProgAction(Request $request){
-      $repository = $this->getDoctrine()->getRepository(Programa::class);
-      $Programa = $repository->findAll();
-      return $this->render('programa/list_programa.html.twig',array('Programa' => $Programa));
-    }
+     * @Route("/lincadoVol/", name="lincadoVol")
+     */
+     public function listadoVolAction(Request $request){
+
+
+       $repository = $this->getDoctrine()->getRepository(Usuarios::class);
+       $usuario = $repository->findByTipoUsuario("Voluntario");
+
+       return $this->render('listas/listaProfesor.html.twig',array( 'usuario' => $usuario));
+      }
 }

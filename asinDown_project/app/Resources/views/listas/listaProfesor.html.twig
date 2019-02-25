@@ -6,25 +6,18 @@ Lista Profesores
 {% endblock %}
 {# CONTENIDO #}
 {% block body %}
-<div class="container">
-  <div class="panel-group">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h4 class="panel-title">
-          <a data-toggle="collapse" href="#collapse1">Usuarios</a>
-        </h4>
-      </div>
-      <div class="dropdown text-center">
-        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
+  <a href="{{ path('lincado') }}">Volver</a>
+      <div class="dropdown text-right mr-4">
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">USUARIOS
         <span class="caret"></span></button>
         <ul class="dropdown-menu">
           <li><a href="{{ path('listadoPro') }}">Profesores</a></li>
           <li><a href="{{ path('listadoVol') }}">Voluntarios</a></li>
-          <li><a href="#">JavaScript</a></li>
+          <li><a href="{{ path('listadoAlumno') }}">Alumnos</a></li>
         </ul>
       </div>
-      <div id="collapse1" class="panel-collapse collapse">
-        <div class="panel-body"><table>
+      <table>
+      <h1>Usuarios</h1>
         <tr class="title">
             <th>Nombre de Usuario</th>
             <th>Contraseña</th>
@@ -32,25 +25,25 @@ Lista Profesores
             <th>Apellidos</th>
             <th>Telefono</th>
             <th>Dirección</th>
+            <th>Programa</th>
             <th>Correo</th>
+            <th>Tipo</th>
         </tr>
           {% for usu in usuario %}
 
           <tr class="cont">
-              <td>{{ usu.id }}</td>
+              <td>{{ usu.username }}</td>
               <td>{{ usu.password }}</td>
               <td>{{ usu.nombre }}</td>
               <td>{{ usu.apellidos }}</td>
               <td>{{ usu.telefono }}</td>
               <td>{{ usu.direccion }}</td>
+              <td>{{ au.programa|join(',') }}</td>
               <td>{{ usu.correo}}</td>
+              <td>{{ usu.tipoUsuario}}</td>
               <td><a href="{{path('updateProf',{'username':usu.id})}}" id="link">Actualizar</a>
               <td><a href="{{path('deleteProf',{'username':usu.id})}}" id="link">Borrar</a></td>
           </tr>
           {% endfor %}
-        </table></div>
-      </div>
-    </div>
-  </div>
-</div>
+        </table>
 {% endblock %}

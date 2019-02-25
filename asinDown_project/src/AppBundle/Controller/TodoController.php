@@ -38,18 +38,10 @@ public function listodo(Request $request)
       $repository = $this->getDoctrine()->getRepository(Programa::class);
       $programa_todo = $repository->findAll();
 
-      $repository = $this->getDoctrine()->getRepository(Profesor::class);
+      $repository = $this->getDoctrine()->getRepository(Usuarios::class);
       $profesor_todo = $repository->findAll();
 
-      $repository = $this->getDoctrine()->getRepository(Voluntario::class);
-      $voluntario_todo = $repository->findAll();
-
-      $repository = $this->getDoctrine()->getRepository(Alumno::class);
-      $alumno_todo = $repository->findAll();
-
-      $repository = $this->getDoctrine()->getRepository(Voluntario::class);
-      $voluntario_todo = $repository->findAll();
-      return $this->render('listas/listaTodo.html.twig',array('profesor_todo' => $profesor_todo, 'voluntario_todo' => $voluntario_todo, 'alumno_todo' => $alumno_todo, 'asignatura_todo' => $asignatura_todo, 'programa_todo' => $programa_todo, 'aula_todo' => $aula_todo));
+      return $this->render('listas/listaTodo.html.twig',array('profesor_todo' => $profesor_todo, 'asignatura_todo' => $asignatura_todo, 'programa_todo' => $programa_todo, 'aula_todo' => $aula_todo));
     }
 
 
@@ -94,7 +86,7 @@ public function listodo(Request $request)
 
 
       /**
-       * @Route("/lincadoVol/", name="lincadoVol")
+       * @Route("/listadoVol/", name="listadoVol")
        */
        public function listadoVolAction(Request $request){
 
@@ -105,7 +97,48 @@ public function listodo(Request $request)
          return $this->render('listas/listaProfesor.html.twig',array( 'usuario' => $usuario));
         }
 
+        /**
+         * @Route("/listadoAlumno/", name="listadoAlumno")
+         */
+         public function listadoAlumnoAction(Request $request){
+
+
+           $repository = $this->getDoctrine()->getRepository(Usuarios::class);
+           $usuario = $repository->findByTipoUsuario("Alumno");
+
+           return $this->render('listas/listaProfesor.html.twig',array( 'usuario' => $usuario));
+          }
         //UPDATES
+        /**
+        *@Route("/updatePrograma/{id}", name="updatePrograma")
+        */
+
+        public function ActuaProgramaAction(Request $request,$id)
+            {
+              if ($id) {
+                $repository = $this->getDoctrine()->getRepository(Programa::class);
+                  $Programa = $repository->find($id);
+                }else {
+                  $Programa = new Programa();
+                }
+                // creates a task and gives it some dummy data for this example
+
+                $form = $this->createForm(ProgramaType::class, $Programa);
+                $form->handleRequest($request);
+
+                        if ($form->isSubmitted() && $form->isValid()) {
+                            $Programa = $form->getData();
+
+                            $entityManager = $this->getDoctrine()->getManager();
+                            $entityManager->persist($Programa);
+                            $entityManager->flush();
+                            return $this->redirectToRoute('listadoPrograma');
+                          }
+
+                  return $this->render('listas/updatePrograma.html.twig', array(
+                      'form' => $form->createView(),
+                  ));
+              }
         /**
         *@Route("/updateProf/{username}", name="updateProf")
         */
@@ -113,7 +146,7 @@ public function listodo(Request $request)
         public function ActuaProfAction(Request $request,$username)
             {
               if ($username) {
-                $repository = $this->getDoctrine()->getRepository(Profesor::class);
+                $repository = $this->getDoctrine()->getRepository(Usuarios::class);
                   $Profesor = $repository->find($username);
                 }else {
                   $Profesor = new Profesor();
@@ -197,12 +230,31 @@ public function listodo(Request $request)
                         ));
                     }
                     //DELETES
+                /**
+                * @Route("/deletePrograma/{id}", name="deletePrograma")
+                */
+                public function deleteProgramaAction($id)
+                {
+                  $form = $this->getDoctrine()->getManager();
+
+                  $Programa = $form->getRepository('AppBundle:Programa')->find($id);
+
+                  if (!$Programa) {
+              return $this->redirectToRoute('listadoPrograma');
+            }
+
+            $form->remove($Programa);
+            $form->flush();
+
+            return $this->redirectToRoute('listadoPrograma');
+          }
               /**
               * @Route("/deleteProf/{username}", name="deleteProf")
               */
               public function deleteProfAction($username)
               {
-                $form = $this->getDoctrine()->getManager();
+              $form = $this->getDoctrine()->getManager();
+
 
                 $Profesor = $form->getRepository('AppBundle:Profesor')->find($username);
 
@@ -315,7 +367,7 @@ public function listodo(Request $request)
 
                       }
 
-                      return $this->render('nuevoPrograma.html.twig', array(
+                      return $this->render('listas/nuevoPrograma.html.twig', array(
                         'form' => $form->createView(),
                       ));
                     }
@@ -347,7 +399,7 @@ public function listodo(Request $request)
 
                         }
 
-                        return $this->render('nuevaAula.html.twig', array(
+                        return $this->render('listas/nuevaAula.html.twig', array(
                           'form' => $form->createView(),
                         ));
                       }

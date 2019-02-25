@@ -22,9 +22,9 @@ class AsignaturaType extends AbstractType
         $builder
         ->add('nombre')
         ->add('aulas')
-        ->add('Username')
-        ->add('nombre_programa')
+        ->add('usuarios')
         ->add('duracion')
-        ->add('save', SubmitType::class, array('label' => 'Actualizar'));
+        ->add('duracion')
+        ->add('save', SubmitType::class, array('label' => 'Enviar'));
     }
 }

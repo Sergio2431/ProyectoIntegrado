@@ -6,7 +6,7 @@ Lista Programa
 {% endblock %}
 {# CONTENIDO #}
 {% block body %}
-
+<a href="{{ path('lincado') }}">Volver</a>
 <div class="container">
   <div class="panel-group">
     <div class="panel panel-default">
@@ -32,7 +32,6 @@ Lista Programa
             <td>{{ asig.aulas }}</td>
             <td>{{ asig.nombre }}</td>
             <td>{{ asig.usuarios|join(',') }}</td>
-            <td>{{ asig.NombrePrograma }}</td>
             <td>{{ asig.duracion }}</td>
         </tr>
           </tr>
@@ -57,12 +56,14 @@ Lista Programa
         <tr class="title">
             <th>ID</th>
             <th>Número de Aula</th>
+            <th>Asignatura</th>
         </tr>
           {% for au in aula_todo %}
 
           <tr class="cont">
               <td>{{ au.id }}</td>
               <td>{{ au.numAula }}</td>
+              <td>{{ au.asignaturas|join(',') }}</td>
           {% endfor %}
           <a href="../nuevaAula">registrar Aula</a>
         </table></div>
@@ -84,6 +85,7 @@ Lista Programa
             <th>ID</th>
             <th>Nombre Programa</th>
             <th>Nombre Usuario</th>
+            <th>Asignaturas</th>
             <th>Duración</th>
             <th>Dirección</th>
             <th>Horario</th>
@@ -96,10 +98,13 @@ Lista Programa
               <td>{{ prog.id }}</td>
               <td>{{ prog.nombre }}</td>
               <td>{{ prog.usuarios|join(',') }}</td>
+              <td>{{ prog.asignaturas|join(',') }}</td>
               <td>{{ prog.duracion }}</td>
               <td>{{ prog.direccion }}</td>
               <td>{{ prog.horario }}</td>
               <td>{{ prog.usuarios|join(',') }}</td>
+              <td><a href="{{path('updatePrograma',{'id':prog.id})}}" id="link">Actualizar</a>
+              <td><a href="{{path('deletePrograma',{'id':prog.id})}}" id="link">Borrar</a></td>
           </tr>
           {% endfor %}
           <a href="../nuevoPrograma">Registrar Programa</a>
