@@ -7,12 +7,6 @@ use Symfony\Component\Routing\Annotation\Route;
 use AppBundle\Entity\Usuario;
 use AppBundle\Form\UsuarioType;
 
-use AppBundle\Entity\Profesor;
-use AppBundle\Form\ProfesorType;
-
-use AppBundle\Entity\Voluntario;
-use AppBundle\Form\VoluntarioType;
-
 use AppBundle\Entity\Aula;
 use AppBundle\Form\AulaType;
 
@@ -105,7 +99,7 @@ class DefaultController extends Controller
     /**
     * @Route("/registerUsuario", name="registerUsuario")
     */
-    public function registerAlumnosAction(Request $request, UserPasswordEncoderInterface $passwordEncoder)
+    public function registerUsuarioAction(Request $request, UserPasswordEncoderInterface $passwordEncoder)
         {
         // 1) build the form
         $user = new Usuario();
@@ -125,7 +119,7 @@ class DefaultController extends Controller
             return $this->redirectToRoute('calendario');
             }
             return $this->render(
-                'seguridad/register_alumnos.html.twig',
+                'seguridad/register_usuario.html.twig',
                 array('form' => $form->createView())
             );
         }
@@ -136,10 +130,25 @@ class DefaultController extends Controller
      */
     public function registerAulasAction(Request $request)
     {
-        // replace this example code with whatever you need
-        return $this->render('seguridad/register_aulas.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
-        ]);
+
+        // 1) build the form
+        $aula = new Aula();
+        $form = $this->createForm(AulaType::class, $aula);
+        // 2) handle the submit (will only happen on POST)
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            // 4) save the User!
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($aula);
+            $entityManager->flush();
+            // ... do any other work - like sending them an email, etc
+            // maybe set a "flash" success message for the user
+            return $this->redirectToRoute('calendario');
+        }
+        return $this->render(
+            'seguridad/register_aulas.html.twig',
+            array('form' => $form->createView())
+        );
     }
 
     /**
@@ -147,10 +156,24 @@ class DefaultController extends Controller
      */
     public function registerAsignaturasAction(Request $request)
     {
-        // replace this example code with whatever you need
-        return $this->render('seguridad/register_asignaturas.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
-        ]);
+        // 1) build the form
+        $asignatura = new Asignatura();
+        $form = $this->createForm(AsignaturaType::class, $asignatura);
+        // 2) handle the submit (will only happen on POST)
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            // 4) save the User!
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($asignatura);
+            $entityManager->flush();
+            // ... do any other work - like sending them an email, etc
+            // maybe set a "flash" success message for the user
+            return $this->redirectToRoute('calendario');
+        }
+        return $this->render(
+            'seguridad/register_asignaturas.html.twig',
+            array('form' => $form->createView())
+        );
     }
 
     /**
@@ -158,10 +181,25 @@ class DefaultController extends Controller
      */
     public function registerProgramasAction(Request $request)
     {
-        // replace this example code with whatever you need
-        return $this->render('seguridad/register_programas.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
-        ]);
+
+        // 1) build the form
+        $programa = new Programa();
+        $form = $this->createForm(ProgramaType::class, $programa);
+        // 2) handle the submit (will only happen on POST)
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            // 4) save the User!
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($programa);
+            $entityManager->flush();
+            // ... do any other work - like sending them an email, etc
+            // maybe set a "flash" success message for the user
+            return $this->redirectToRoute('calendario');
+        }
+        return $this->render(
+            'seguridad/register_programas.html.twig',
+            array('form' => $form->createView())
+        );
     }
 
     /**

@@ -35,22 +35,16 @@ class Asignatura
     private $id_aula;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Profesor", inversedBy="asignatura")
-     * @ORM\JoinColumn(name="username_profesor", referencedColumnName="username")
+     * @ORM\ManyToOne(targetEntity="Usuario", inversedBy="asignatura")
+     * @ORM\JoinColumn(name="username_usuario", referencedColumnName="username")
      */
-    private $username_profesor;
+    private $username_usuario;
 
     /**
      * @ORM\ManyToOne(targetEntity="Programa", inversedBy="asignatura")
      * @ORM\JoinColumn(name="id_programa", referencedColumnName="id")
      */
     private $id_programa;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="Voluntario", inversedBy="asignatura")
-     * @ORM\JoinColumn(name="username_voluntario", referencedColumnName="username")
-     */
-    private $username_voluntario;
 
     /**
      * Get id.

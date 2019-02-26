@@ -28,14 +28,10 @@ Pagina principal
     <div class="col-md-8">
       <form>
         <h3 class="mb-4"><b>Nombre del Aula</b></h3>
-        <div class="col-md-5 mb-4 d-inline-block">
-          <label for="uname"><b>Capacidad</b></label>
-          <i class="fas fa-user"></i><input type="text" name="uname" required>
-        </div>
-        <div class="col-md-5 mb-4 d-inline-block">
-          <label for="uname"><b>Numero</b></label>
-          <i class="fas fa-phone"></i><input type="text" name="uname" required>
-        </div>
+        <label for="uname"><b>Nombre</b></label>
+        <i class="fas fa-user"></i>{{ form_widget(form.Nombre) }}
+        <label for="uname"><b>Cantidad</b></label>
+        <i class="fas fa-user"></i>{{ form_widget(form.Cantidad) }}
         <br>
             <button type="button" class="btn btn-primary">Añadir</button>
             <input type="reset" class="btn btn-danger" value="Resetear"></input>

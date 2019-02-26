@@ -4,6 +4,9 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+use Doctrine\Common\Collections\ArrayCollection;
+
+
 /**
  * Aula
  *
@@ -28,9 +31,16 @@ class Aula
      */
     private $numAula;
 
-     /**
-     * @ORM\OneToMany(targetEntity="Asignatura", mappedBy="aula")
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="capacidad", type="integer")
      */
+    private $capacidad;
+
+    /**
+    * @ORM\OneToMany(targetEntity="Asignatura", mappedBy="aula")
+    */
     private $asignatura;
 
     public function __construct()
@@ -72,5 +82,29 @@ class Aula
     public function getNumAula()
     {
         return $this->numAula;
+    }
+
+        /**
+     * Set capacidad.
+     *
+     * @param integer $capacidad
+     *
+     * @return Capacidad
+     */
+    public function setCapacidad($capacidad)
+    {
+        $this->capacidad = $capacidad;
+
+        return $this;
+    }
+
+    /**
+     * Get capacidad.
+     *
+     * @return integer
+     */
+    public function getCapacidad()
+    {
+        return $this->capacidad;
     }
 }
