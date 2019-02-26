@@ -17,12 +17,11 @@ class AulaType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
-        ->add('capacidad', NumberType::class)
+        $builder->
+        
+        add('numAula', TextType::class)
 
-        ->add('numAula', TextType::class)
-
-        ->add('Enviar', SubmitType::class)
+        ->add('registrarse', SubmitType::class)
 
         ;
     }/**
