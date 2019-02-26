@@ -2,7 +2,7 @@
 {% extends 'base.html.twig' %}
 {# TITULO #}
 {% block title %}
-Lista Profesores
+Lista Usuarios
 {% endblock %}
 {# CONTENIDO #}
 {% block body %}
@@ -11,8 +11,8 @@ Lista Profesores
         <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">USUARIOS
         <span class="caret"></span></button>
         <ul class="dropdown-menu">
-          <li><a href="{{ path('listadoPro') }}">Profesores</a></li>
-          <li><a href="{{ path('listadoVol') }}">Voluntarios</a></li>
+          <li><a href="{{ path('listadoProfesor') }}">Profesores</a></li>
+          <li><a href="{{ path('listadoVoluntario') }}">Voluntarios</a></li>
           <li><a href="{{ path('listadoAlumno') }}">Alumnos</a></li>
         </ul>
       </div>
@@ -26,6 +26,8 @@ Lista Profesores
             <th>Telefono</th>
             <th>Dirección</th>
             <th>Programa</th>
+            <th>Diversidad</th>
+            <th>disponibilidad</th>
             <th>Correo</th>
             <th>Tipo</th>
         </tr>
@@ -38,11 +40,13 @@ Lista Profesores
               <td>{{ usu.apellidos }}</td>
               <td>{{ usu.telefono }}</td>
               <td>{{ usu.direccion }}</td>
-              <td>{{ au.programa|join(',') }}</td>
+              <td>{{ usu.programas|join(',') }}</td>
+              <td>{{ usu.diversidad}}</td>
+              <td>{{ usu.disponibilidad}}</td>
               <td>{{ usu.correo}}</td>
               <td>{{ usu.tipoUsuario}}</td>
-              <td><a href="{{path('updateProf',{'username':usu.id})}}" id="link">Actualizar</a>
-              <td><a href="{{path('deleteProf',{'username':usu.id})}}" id="link">Borrar</a></td>
+              <td><a href="{{path('updateUsuario',{'username':usu.id})}}" id="link">Actualizar</a>
+              <td><a href="{{path('deleteUsuario',{'username':usu.id})}}" id="link">Borrar</a></td>
           </tr>
           {% endfor %}
         </table>

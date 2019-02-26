@@ -32,7 +32,11 @@ Lista Programa
             <td>{{ asig.aulas }}</td>
             <td>{{ asig.nombre }}</td>
             <td>{{ asig.usuarios|join(',') }}</td>
+            <td>{{ asig.programas|join(',') }}</td>
             <td>{{ asig.duracion }}</td>
+            <td><a href="{{path('updateAsign',{'id':asig.id})}}" id="link">Actualizar</a>
+            <td><a href="{{path('deleteAsign',{'id':asig.id})}}" id="link">Borrar</a></td>
+        </tr>
         </tr>
           </tr>
           {% endfor %}
@@ -64,6 +68,9 @@ Lista Programa
               <td>{{ au.id }}</td>
               <td>{{ au.numAula }}</td>
               <td>{{ au.asignaturas|join(',') }}</td>
+              <td><a href="{{path('updateAula',{'id':au.id})}}" id="link">Actualizar</a>
+              <td><a href="{{path('deleteAula',{'id':au.id})}}" id="link">Borrar</a></td>
+          </tr>
           {% endfor %}
           <a href="../nuevaAula">registrar Aula</a>
         </table></div>
@@ -90,7 +97,7 @@ Lista Programa
             <th>Dirección</th>
             <th>Horario</th>
             <th>Tipo de Usuarios</th>
-
+          </tr>
         </tr>
           {% for prog in programa_todo %}
 

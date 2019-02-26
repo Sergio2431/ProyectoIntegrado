@@ -33,7 +33,7 @@ class Asignatura
 
     /**
      * @ORM\Column(name="aulas", type="string")
-     * @ORM\ManyToMany(targetEntity="Aula", mappedBy="asignaturasA")
+     * @ORM\ManyToMany(targetEntity="Aula", mappedBy="asignaturas")
 
      */
     private $aulas;
@@ -41,13 +41,13 @@ class Asignatura
 
     /**
      * Many Asignaturas have Many Usuarios.
-     * @ORM\ManyToMany(targetEntity="Usuarios", mappedBy="asignaturasU")
+     * @ORM\ManyToMany(targetEntity="Usuarios", mappedBy="asignaturas")
      */
     private $usuarios;
 
     /**
      * Many Asignaturas have Many Usuarios.
-     * @ORM\ManyToMany(targetEntity="Programa", mappedBy="asignaturasP")
+     * @ORM\ManyToMany(targetEntity="Programa", mappedBy="asignaturas")
      */
     private $programas;
 
@@ -203,7 +203,9 @@ class Asignatura
     {
         $this->usuarios = new \Doctrine\Common\Collections\ArrayCollection();
     }
-
+    public function __toString() {
+    return $this->nombre;
+    }
 
     /**
      * Add programa

@@ -24,7 +24,6 @@ class AsignaturaType extends AbstractType
         ->add('aulas')
         ->add('usuarios')
         ->add('duracion')
-        ->add('duracion')
         ->add('save', SubmitType::class, array('label' => 'Enviar'));
     }
 }

@@ -41,7 +41,7 @@ class Programa
    * @ORM\ManyToMany(targetEntity="Asignatura", inversedBy="programas")
    * @ORM\JoinTable(name="programas_asignaturas")
      */
-    private $asignaturasP;
+    private $asignaturas;
 
     /**
      * @var string
@@ -63,11 +63,19 @@ class Programa
      * @ORM\Column(name="horario", type="string", length=255)
      */
     private $horario;
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->usuarios = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->asignaturas = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
-     * Get id.
+     * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -75,7 +83,7 @@ class Programa
     }
 
     /**
-     * Set nombre.
+     * Set nombre
      *
      * @param string $nombre
      *
@@ -89,7 +97,7 @@ class Programa
     }
 
     /**
-     * Get nombre.
+     * Get nombre
      *
      * @return string
      */
@@ -99,7 +107,7 @@ class Programa
     }
 
     /**
-     * Set duracion.
+     * Set duracion
      *
      * @param string $duracion
      *
@@ -113,7 +121,7 @@ class Programa
     }
 
     /**
-     * Get duracion.
+     * Get duracion
      *
      * @return string
      */
@@ -123,7 +131,7 @@ class Programa
     }
 
     /**
-     * Set direccion.
+     * Set direccion
      *
      * @param string $direccion
      *
@@ -137,7 +145,7 @@ class Programa
     }
 
     /**
-     * Get direccion.
+     * Get direccion
      *
      * @return string
      */
@@ -147,7 +155,7 @@ class Programa
     }
 
     /**
-     * Set horario.
+     * Set horario
      *
      * @param string $horario
      *
@@ -161,7 +169,7 @@ class Programa
     }
 
     /**
-     * Get horario.
+     * Get horario
      *
      * @return string
      */
@@ -171,11 +179,11 @@ class Programa
     }
 
     /**
-     * Add usuario.
+     * Add usuario
      *
      * @param \AppBundle\Entity\Usuarios $usuario
      *
-     * @return Asignatura
+     * @return Programa
      */
     public function addUsuario(\AppBundle\Entity\Usuarios $usuario)
     {
@@ -185,56 +193,23 @@ class Programa
     }
 
     /**
-     * Remove usuario.
+     * Remove usuario
      *
      * @param \AppBundle\Entity\Usuarios $usuario
-     *
-     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
      */
     public function removeUsuario(\AppBundle\Entity\Usuarios $usuario)
     {
-        return $this->usuarios->removeElement($usuario);
+        $this->usuarios->removeElement($usuario);
     }
 
     /**
-     * Get usuarios.
+     * Get usuarios
      *
      * @return \Doctrine\Common\Collections\Collection
      */
     public function getUsuarios()
     {
         return $this->usuarios;
-    }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->usuarios = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Set nombreUsuarios
-     *
-     * @param string $nombreUsuarios
-     *
-     * @return Programa
-     */
-    public function setNombreUsuarios($nombreUsuarios)
-    {
-        $this->nombreUsuarios = $nombreUsuarios;
-
-        return $this;
-    }
-
-    /**
-     * Get nombreUsuarios
-     *
-     * @return string
-     */
-    public function getNombreUsuarios()
-    {
-        return $this->nombreUsuarios;
     }
 
     /**
@@ -270,38 +245,7 @@ class Programa
     {
         return $this->asignaturas;
     }
-
-    /**
-     * Add asignaturasP
-     *
-     * @param \AppBundle\Entity\Asignatura $asignaturasP
-     *
-     * @return Programa
-     */
-    public function addAsignaturasP(\AppBundle\Entity\Asignatura $asignaturasP)
-    {
-        $this->asignaturasP[] = $asignaturasP;
-
-        return $this;
-    }
-
-    /**
-     * Remove asignaturasP
-     *
-     * @param \AppBundle\Entity\Asignatura $asignaturasP
-     */
-    public function removeAsignaturasP(\AppBundle\Entity\Asignatura $asignaturasP)
-    {
-        $this->asignaturasP->removeElement($asignaturasP);
-    }
-
-    /**
-     * Get asignaturasP
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getAsignaturasP()
-    {
-        return $this->asignaturasP;
+    public function __toString() {
+    return $this->nombre;
     }
 }

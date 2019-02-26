@@ -19,7 +19,9 @@ class AulaType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('numAula');
-        $builder->add('asign');
+        $builder->add('numAula')
+        ->add('asignaturas')
+        ->add('save', SubmitType::class, array('label' => 'Actualizar'));
+
     }
 }

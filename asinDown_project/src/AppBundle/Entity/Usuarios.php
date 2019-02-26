@@ -26,7 +26,7 @@ class Usuarios
      * @ORM\ManyToMany(targetEntity="Asignatura", inversedBy="usuarios")
      * @ORM\JoinTable(name="usuarios_asignaturas")
      */
-    private $asignaturasU;
+    private $asignaturas;
 
     /**
      * Many Usuarios have Many Programas.
@@ -104,46 +104,56 @@ class Usuarios
      */
     private $tipoUsuario;
 
-    public function __construct() {
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
         $this->asignaturas = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->programas = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    public function __toString() {
+    return $this->nombre;
+    return $this->tipoUsuario;
     }
 
     /**
-     * Get username.
+     * Get id
      *
-     * @return string
+     * @return integer
      */
-    public function getID()
+    public function getId()
     {
         return $this->id;
     }
 
-        /**
-         * Set username.
-         *
-         * @param string $username
-         *
-         * @return Usuarios
-         */
-        public function setUsername($username)
-        {
-            $this->username = $username;
+    /**
+     * Set username
+     *
+     * @param string $username
+     *
+     * @return Usuarios
+     */
+    public function setUsername($username)
+    {
+        $this->username = $username;
 
-            return $this;
-        }
-
-        /**
-         * Get username.
-         *
-         * @return string
-         */
-        public function getUsername()
-        {
-            return $this->username;
-        }
+        return $this;
+    }
 
     /**
-     * Set password.
+     * Get username
+     *
+     * @return string
+     */
+    public function getUsername()
+    {
+        return $this->username;
+    }
+
+    /**
+     * Set password
      *
      * @param string $password
      *
@@ -157,7 +167,7 @@ class Usuarios
     }
 
     /**
-     * Get password.
+     * Get password
      *
      * @return string
      */
@@ -167,7 +177,7 @@ class Usuarios
     }
 
     /**
-     * Set nombre.
+     * Set nombre
      *
      * @param string $nombre
      *
@@ -181,17 +191,17 @@ class Usuarios
     }
 
     /**
-     * Get nombre.
+     * Get nombre
      *
      * @return string
      */
-    public function getnombre()
+    public function getNombre()
     {
         return $this->nombre;
     }
 
     /**
-     * Set apellidos.
+     * Set apellidos
      *
      * @param string $apellidos
      *
@@ -205,7 +215,7 @@ class Usuarios
     }
 
     /**
-     * Get apellidos.
+     * Get apellidos
      *
      * @return string
      */
@@ -215,7 +225,7 @@ class Usuarios
     }
 
     /**
-     * Set telefono.
+     * Set telefono
      *
      * @param string $telefono
      *
@@ -229,7 +239,7 @@ class Usuarios
     }
 
     /**
-     * Get telefono.
+     * Get telefono
      *
      * @return string
      */
@@ -239,7 +249,7 @@ class Usuarios
     }
 
     /**
-     * Set direccion.
+     * Set direccion
      *
      * @param string $direccion
      *
@@ -253,7 +263,7 @@ class Usuarios
     }
 
     /**
-     * Get direccion.
+     * Get direccion
      *
      * @return string
      */
@@ -263,31 +273,7 @@ class Usuarios
     }
 
     /**
-     * Set programa.
-     *
-     * @param string $programa
-     *
-     * @return Usuarios
-     */
-    public function setPrograma($programa)
-    {
-        $this->programa = $programa;
-
-        return $this;
-    }
-
-    /**
-     * Get programa.
-     *
-     * @return string
-     */
-    public function getPrograma()
-    {
-        return $this->programa;
-    }
-
-    /**
-     * Set correo.
+     * Set correo
      *
      * @param string $correo
      *
@@ -301,7 +287,7 @@ class Usuarios
     }
 
     /**
-     * Get correo.
+     * Get correo
      *
      * @return string
      */
@@ -311,7 +297,7 @@ class Usuarios
     }
 
     /**
-     * Set disponibilidad.
+     * Set disponibilidad
      *
      * @param string $disponibilidad
      *
@@ -325,7 +311,7 @@ class Usuarios
     }
 
     /**
-     * Get disponibilidad.
+     * Get disponibilidad
      *
      * @return string
      */
@@ -335,7 +321,7 @@ class Usuarios
     }
 
     /**
-     * Set diversidad.
+     * Set diversidad
      *
      * @param string $diversidad
      *
@@ -349,7 +335,7 @@ class Usuarios
     }
 
     /**
-     * Get diversidad.
+     * Get diversidad
      *
      * @return string
      */
@@ -359,7 +345,7 @@ class Usuarios
     }
 
     /**
-     * Set tipoUsuario.
+     * Set tipoUsuario
      *
      * @param string $tipoUsuario
      *
@@ -373,7 +359,7 @@ class Usuarios
     }
 
     /**
-     * Get tipoUsuario.
+     * Get tipoUsuario
      *
      * @return string
      */
@@ -383,7 +369,7 @@ class Usuarios
     }
 
     /**
-     * Add asignatura.
+     * Add asignatura
      *
      * @param \AppBundle\Entity\Asignatura $asignatura
      *
@@ -397,19 +383,17 @@ class Usuarios
     }
 
     /**
-     * Remove asignatura.
+     * Remove asignatura
      *
      * @param \AppBundle\Entity\Asignatura $asignatura
-     *
-     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
      */
     public function removeAsignatura(\AppBundle\Entity\Asignatura $asignatura)
     {
-        return $this->asignaturas->removeElement($asignatura);
+        $this->asignaturas->removeElement($asignatura);
     }
 
     /**
-     * Get asignaturas.
+     * Get asignaturas
      *
      * @return \Doctrine\Common\Collections\Collection
      */
@@ -419,7 +403,7 @@ class Usuarios
     }
 
     /**
-     * Add programa.
+     * Add programa
      *
      * @param \AppBundle\Entity\Programa $programa
      *
@@ -433,19 +417,17 @@ class Usuarios
     }
 
     /**
-     * Remove programa.
+     * Remove programa
      *
      * @param \AppBundle\Entity\Programa $programa
-     *
-     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
      */
     public function removePrograma(\AppBundle\Entity\Programa $programa)
     {
-        return $this->programas->removeElement($programa);
+        $this->programas->removeElement($programa);
     }
 
     /**
-     * Get programas.
+     * Get programas
      *
      * @return \Doctrine\Common\Collections\Collection
      */
@@ -453,41 +435,18 @@ class Usuarios
     {
         return $this->programas;
     }
-    public function __toString(){
-      return $this->nombre;
-    }
 
     /**
-     * Add asignaturasU
+     * Set programas
      *
-     * @param \AppBundle\Entity\Asignatura $asignaturasU
+     * @param string $programas
      *
      * @return Usuarios
      */
-    public function addAsignaturasU(\AppBundle\Entity\Asignatura $asignaturasU)
+    public function setProgramas($programas)
     {
-        $this->asignaturasU[] = $asignaturasU;
+        $this->programas = $programas;
 
         return $this;
-    }
-
-    /**
-     * Remove asignaturasU
-     *
-     * @param \AppBundle\Entity\Asignatura $asignaturasU
-     */
-    public function removeAsignaturasU(\AppBundle\Entity\Asignatura $asignaturasU)
-    {
-        $this->asignaturasU->removeElement($asignaturasU);
-    }
-
-    /**
-     * Get asignaturasU
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getAsignaturasU()
-    {
-        return $this->asignaturasU;
     }
 }
