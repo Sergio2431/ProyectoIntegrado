@@ -1,0 +1,32 @@
+{# Plantillla de nuestra aplicacion #}
+{% extends 'base.html.twig' %}
+{# TITULO #}
+{% block title %}
+Lista Asignaturas
+{% endblock %}
+{# CONTENIDO #}
+{% block body %}
+
+<table>
+<h1>Lista de Asignatura</h1>
+<tr class="title">
+    <th>ID</th>
+    <th>ID Aula</th>
+    <th>Nombre</th>
+    <th>Usuario Profesor</th>
+    <th>ID Programa</th>
+    <th>Usuario Voluntario</th>
+</tr>
+  {% for asig in Asignatura %}
+
+  <tr class="cont">
+      <td>{{ asig.id }}</td>
+      <td>{{ asig.id_aula }}</td>
+      <td>{{ asig.nombre }}</td>
+      <td>{{ asig.username_profesor }}</td>
+      <td>{{ asig.id_programa }}</td>
+      <td>{{ asig.username_voluntario }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

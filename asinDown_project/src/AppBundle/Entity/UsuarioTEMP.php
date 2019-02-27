@@ -9,7 +9,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * Usuario
  *
  * @ORM\Table(name="usuario")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\UsuarioRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\UsuariosRepository")
  */
 class Usuario implements UserInterface
 {
@@ -117,10 +117,17 @@ class Usuario implements UserInterface
       public function __construct()
      {
          $this->roles = array('ROLE_USER');
-         $this->asignaturas = new \Doctrine\Common\Collections\ArrayCollection();
-         $this->programas = new \Doctrine\Common\Collections\ArrayCollection();
      }
 
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->asignaturas = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->programas = new \Doctrine\Common\Collections\ArrayCollection();
+    }
     public function __toString() {
     return $this->nombre;
     return $this->tipoUsuario;

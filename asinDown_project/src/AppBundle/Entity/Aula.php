@@ -3,10 +3,8 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
 use Doctrine\Common\Collections\ArrayCollection;
-
-
+use Doctrine\ORM\Mapping\ManytoOne;
 /**
  * Aula
  *
@@ -27,33 +25,22 @@ class Aula
     /**
      * @var string
      *
-     * @ORM\Column(name="numAula", type="string", length=255)
+     * @ORM\Column(name="numAula", type="string")
      */
     private $numAula;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="capacidad", type="integer")
+    * Many Asignaturas have Many Aula.
+    * @ORM\Column(name="asignaturas", type="string")
+    * @ORM\ManyToMany(targetEntity="Asignatura", inversedBy="aulas")
+    * @ORM\JoinTable(name="aulas_asignaturas")
      */
-    private $capacidad;
+    private $asignaturas;
 
     /**
-    * @ORM\OneToMany(targetEntity="Asignatura", mappedBy="aula")
-    */
-    private $asignatura;
-
-    public function __construct()
-    {
-        $this->asignatura = new ArrayCollection();
-    }
-
-
-
-    /**
-     * Get id.
+     * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -61,7 +48,7 @@ class Aula
     }
 
     /**
-     * Set numAula.
+     * Set numAula
      *
      * @param string $numAula
      *
@@ -75,7 +62,7 @@ class Aula
     }
 
     /**
-     * Get numAula.
+     * Get numAula
      *
      * @return string
      */
@@ -84,27 +71,30 @@ class Aula
         return $this->numAula;
     }
 
-        /**
-     * Set capacidad.
+    /**
+     * Set asignaturas
      *
-     * @param integer $capacidad
+     * @param string $asignaturas
      *
-     * @return Capacidad
+     * @return Aula
      */
-    public function setCapacidad($capacidad)
+    public function setAsignaturas($asignaturas)
     {
-        $this->capacidad = $capacidad;
+        $this->asignaturas = $asignaturas;
 
         return $this;
     }
 
     /**
-     * Get capacidad.
+     * Get asignaturas
      *
-     * @return integer
+     * @return string
      */
-    public function getCapacidad()
+    public function getAsignaturas()
     {
-        return $this->capacidad;
+        return $this->asignaturas;
+    }
+    public function __toString() {
+    return $this->numAula;
     }
 }

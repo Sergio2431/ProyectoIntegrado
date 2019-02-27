@@ -5,14 +5,12 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\IntegerType;
-use Symfony\Component\Form\Extension\Core\Type\PasswordType;
-
-use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
-
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\TelType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\ResetType;
 
 class UsuarioType extends AbstractType
 {
@@ -22,41 +20,19 @@ class UsuarioType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-        ->add('username', TextType::class)
-        ->add('plainPassword', RepeatedType::class, array(
-            'type' => PasswordType::class,
-            'first_options'  => array('label' => 'Contraseña'),
-            'second_options' => array('label' => 'Repite contraseña'),
-        ))  
-        ->add('Nombre', TextType::class)
-        ->add('Apellidos', TextType::class)      
-        ->add('Telefono', IntegerType::class)
-        ->add('Direccion', TextType::class)
-        ->add('Programa', TextType::class)
-        ->add('Correo', TextType::class)
-        ->add('Disponibilidad', TextType::class)    
-        ->add('Diversidad', TextType::class)
-        ->add('Tipo_usuario', IntegerType::class)
-        ->add('Enviar', SubmitType::class)
+        ->add('username', TextType::class, array(
+        'attr' => array('readonly' => true)))
+        ->add('password', PasswordType::class)
+        ->add('nombre', TextType::class)
+        ->add('apellidos', TextType::class)
+        ->add('telefono', TelType::class)
+        ->add('direccion', TextType::class)
+        ->add('correo', EmailType::class)
+        ->add('programas', TextType::class)
+        ->add('disponibilidad', TextType::class)
+        ->add('diversidad', TextType::class)
+        ->add('tipoUsuario', TextType::class)
+        ->add('save', SubmitType::class, array('label' => 'Actualizar'));
 
-        ;
-    }/**
-     * {@inheritdoc}
-     */
-    public function configureOptions(OptionsResolver $resolver)
-    {
-        $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Usuario'
-        ));
     }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getBlockPrefix()
-    {
-        return 'appbundle_usuario';
-    }
-
-
 }
