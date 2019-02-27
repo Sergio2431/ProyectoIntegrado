@@ -12,15 +12,26 @@ use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\ResetType;
 
-class AulaType extends AbstractType
+class UpdateType extends AbstractType
 {
     /**
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('numAula')
-        ->add('asignaturas')
+        $builder
+        ->add('username', TextType::class, array(
+        'attr' => array('readonly' => true)))
+        ->add('password', PasswordType::class)
+        ->add('nombre', TextType::class)
+        ->add('apellidos', TextType::class)
+        ->add('telefono', TelType::class)
+        ->add('direccion', TextType::class)
+        ->add('correo', EmailType::class)
+        ->add('programas', TextType::class)
+        ->add('disponibilidad', TextType::class)
+        ->add('diversidad', TextType::class)
+        ->add('tipoUsuario', TextType::class)
         ->add('save', SubmitType::class, array('label' => 'Actualizar'));
 
     }

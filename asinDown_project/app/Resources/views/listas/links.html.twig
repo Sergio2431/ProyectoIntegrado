@@ -1,0 +1,16 @@
+{# Plantillla de nuestra aplicacion #}
+{% extends 'base.html.twig' %}
+{# TITULO #}
+{% block title %}
+Links
+{% endblock %}
+{# CONTENIDO #}
+{% block body %}
+<a href="../listadoProfesor"><img src="https://www.websa100.com/wp-content/uploads/2015/05/usuarios-redes-sociales.png" class="img"></a>
+<a href="../listadoPrograma"><img src="https://www.cev.com/wp-content/uploads/2017/09/alumos-slider-MOVIL.jpg" class="img"></a>
+{% block stylesheets %}
+<style>
+.img{width:49.5%; height:300px; text-align:center;}
+</style>
+{% endblock %}
+{% endblock %}

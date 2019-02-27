@@ -124,8 +124,6 @@ class Usuario implements UserInterface
       public function __construct()
      {
          $this->roles = array('ROLE_USER');
-         $this->asignaturas = new \Doctrine\Common\Collections\ArrayCollection();
-    $this->programas = new \Doctrine\Common\Collections\ArrayCollection();
      }
 
     /**
@@ -438,86 +436,4 @@ class Usuario implements UserInterface
     public function eraseCredentials()
     {
     }
-
-    /**
-     * Get id
-     *
-     * @return integer
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Add asignatura
-     *
-     * @param \AppBundle\Entity\Asignatura $asignatura
-     *
-     * @return Usuario
-     */
-    public function addAsignatura(\AppBundle\Entity\Asignatura $asignatura)
-    {
-        $this->asignaturas[] = $asignatura;
-
-        return $this;
-    }
-
-    /**
-     * Remove asignatura
-     *
-     * @param \AppBundle\Entity\Asignatura $asignatura
-     */
-    public function removeAsignatura(\AppBundle\Entity\Asignatura $asignatura)
-    {
-        $this->asignaturas->removeElement($asignatura);
-    }
-
-    /**
-     * Get asignaturas
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getAsignaturas()
-    {
-        return $this->asignaturas;
-    }
-
-    /**
-     * Add programa
-     *
-     * @param \AppBundle\Entity\Programa $programa
-     *
-     * @return Usuario
-     */
-    public function addPrograma(\AppBundle\Entity\Programa $programa)
-    {
-        $this->programas[] = $programa;
-
-        return $this;
-    }
-
-    /**
-     * Remove programa
-     *
-     * @param \AppBundle\Entity\Programa $programa
-     */
-    public function removePrograma(\AppBundle\Entity\Programa $programa)
-    {
-        $this->programas->removeElement($programa);
-    }
-
-    /**
-     * Get programas
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getProgramas()
-    {
-        return $this->programas;
-    }
-    public function __toString() {
-return $this->nombre;
-return $this->tipoUsuario;
-}
 }
