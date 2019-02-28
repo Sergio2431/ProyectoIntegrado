@@ -6,9 +6,11 @@
 
 {% block body %}
 <br>
+<div class="box">
 {{ form_start(form) }}
 {{ form_widget(form) }}
 {{ form_end(form) }}
+</div>
 <br>
 <a href="{{path('listadoPrograma')}}" id="link">Programas</a>
 {% endblock %}

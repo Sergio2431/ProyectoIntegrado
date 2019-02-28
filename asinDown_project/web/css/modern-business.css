@@ -50,7 +50,7 @@
 
   .titulos-footer{
     color: #fff;
-    margin-bottom: 30px; 
+    margin-bottom: 30px;
   }
 
   .redes-footer, footer div p{
@@ -59,7 +59,7 @@
 
   a.redes-footer i{
     font-size: 30px;
-    margin: 15px 40px 0 0; 
+    margin: 15px 40px 0 0;
   }
 
   hr{
@@ -133,7 +133,6 @@
        margin-bottom: 30px;
    }
 
-
 /* Página de Perfil */
 
   .containerFormulario{
@@ -167,3 +166,19 @@
     height: 45px;
     margin-left: 465px;
   }
+
+    /*FORM (Mejorable)*/
+    h3{margin-left: -60%}
+    .box{align-items: center;justify-content: center; margin-left: 32%;}
+    .box form{width: 40%; background-color: #ebebeb; height: 500px; align-items: center;
+      padding-top: 2%; padding-bottom: 3%; margin-bottom: 2%; border-radius: 8px;}
+    .box h3{text-align: center;}
+
+    .box label{ margin-left: 5%; width: 20%;}
+    .box input{ width: 54%;}
+    .box button{ margin-top: 6%; margin-left: 0%; width: 50%; margin-left: 25%;
+      background-color: #00368b; color: #ebebeb; border-radius: 8px;}
+    .box input#voluntario_disponibilidad{ margin-right:60%; width: 15px; text-align: left;}
+
+    /*COLLAPSE*/
+    .panel-title a{color: black; text-decoration: none;}

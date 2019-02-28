@@ -166,7 +166,7 @@ public function listodo(Request $request)
                                   return $this->redirectToRoute('listadoPrograma');
                                 }
 
-                        return $this->render('listas/updatePrograma.html.twig', array(
+                        return $this->render('listas/updateAsignatura.html.twig', array(
                             'form' => $form->createView(),
                         ));
                     }
@@ -196,7 +196,7 @@ public function listodo(Request $request)
                                         return $this->redirectToRoute('listadoPrograma');
                                       }
 
-                              return $this->render('listas/updatePrograma.html.twig', array(
+                              return $this->render('listas/updateAula.html.twig', array(
                                   'form' => $form->createView(),
                               ));
                           }

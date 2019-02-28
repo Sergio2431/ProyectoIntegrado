@@ -28,7 +28,7 @@ class UpdateType extends AbstractType
         ->add('telefono', TelType::class)
         ->add('direccion', TextType::class)
         ->add('correo', EmailType::class)
-        ->add('programas', TextType::class)
+        ->add('programa', TextType::class)
         ->add('disponibilidad', TextType::class)
         ->add('diversidad', TextType::class)
         ->add('tipoUsuario', TextType::class)
